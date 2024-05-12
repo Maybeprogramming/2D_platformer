@@ -1,11 +1,13 @@
 using UnityEngine;
 
 [RequireComponent(typeof(GroundDetector))]
-public class Player : MonoBehaviour
+public class PlayerEntity : MonoBehaviour
 {
     [SerializeField] private bool _isGrounded;
 
     [SerializeField] private GroundDetector _groundDetector;
+
+    public bool IsGrounded => _isGrounded;
 
     private void Start()
     {

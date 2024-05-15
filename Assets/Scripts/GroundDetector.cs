@@ -18,6 +18,5 @@ public class GroundDetector : MonoBehaviour
         }
 
         return false;
-        //return Physics2D.OverlapCircle(point, _radius, _groundLayerMask);
     }
 }

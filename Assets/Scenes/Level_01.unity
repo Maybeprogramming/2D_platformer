@@ -341,7 +341,6 @@ GameObject:
   m_Component:
   - component: {fileID: 159434947}
   - component: {fileID: 159434950}
-  - component: {fileID: 159434949}
   - component: {fileID: 159434948}
   m_Layer: 6
   m_Name: Platform (1)
@@ -410,18 +409,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &159434949
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 159434946}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e8ec4c0950ef234192c212cb24dd587, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!212 &159434950
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -484,7 +471,6 @@ GameObject:
   m_Component:
   - component: {fileID: 176098551}
   - component: {fileID: 176098554}
-  - component: {fileID: 176098553}
   - component: {fileID: 176098552}
   m_Layer: 6
   m_Name: Platform (4)
@@ -553,18 +539,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &176098553
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 176098550}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e8ec4c0950ef234192c212cb24dd587, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!212 &176098554
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1119,7 +1093,6 @@ GameObject:
   m_Component:
   - component: {fileID: 812152675}
   - component: {fileID: 812152678}
-  - component: {fileID: 812152677}
   - component: {fileID: 812152676}
   m_Layer: 6
   m_Name: Platform (5)
@@ -1188,18 +1161,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &812152677
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 812152674}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e8ec4c0950ef234192c212cb24dd587, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!212 &812152678
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1346,7 +1307,6 @@ GameObject:
   m_Component:
   - component: {fileID: 907022287}
   - component: {fileID: 907022290}
-  - component: {fileID: 907022289}
   - component: {fileID: 907022288}
   m_Layer: 6
   m_Name: Platform (2)
@@ -1415,18 +1375,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &907022289
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 907022286}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e8ec4c0950ef234192c212cb24dd587, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!212 &907022290
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1958,7 +1906,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1224510006}
   - component: {fileID: 1224510009}
-  - component: {fileID: 1224510008}
   - component: {fileID: 1224510007}
   m_Layer: 6
   m_Name: Platform (6)
@@ -2027,18 +1974,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &1224510008
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1224510005}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e8ec4c0950ef234192c212cb24dd587, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!212 &1224510009
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2101,7 +2036,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1234837325}
   - component: {fileID: 1234837328}
-  - component: {fileID: 1234837327}
   - component: {fileID: 1234837326}
   m_Layer: 6
   m_Name: Platform (7)
@@ -2170,18 +2104,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &1234837327
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1234837324}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e8ec4c0950ef234192c212cb24dd587, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!212 &1234837328
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2753,7 +2675,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1476519633}
   - component: {fileID: 1476519632}
-  - component: {fileID: 1476519635}
   - component: {fileID: 1476519634}
   m_Layer: 6
   m_Name: Platform
@@ -2874,18 +2795,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &1476519635
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1476519631}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e8ec4c0950ef234192c212cb24dd587, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1476885530
 GameObject:
   m_ObjectHideFlags: 0
@@ -3384,7 +3293,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2005409877}
   - component: {fileID: 2005409880}
-  - component: {fileID: 2005409879}
   - component: {fileID: 2005409878}
   m_Layer: 6
   m_Name: Platform (3)
@@ -3453,18 +3361,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &2005409879
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2005409876}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e8ec4c0950ef234192c212cb24dd587, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!212 &2005409880
 SpriteRenderer:
   m_ObjectHideFlags: 0

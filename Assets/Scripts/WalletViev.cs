@@ -12,20 +12,20 @@ public class WalletViev : MonoBehaviour
     private void Start()
     {
         _text = _textCoinAmount.text;
-        SetTextCoinAmount(_startAmount);
+        OnSetTextCoinAmount(_startAmount);
     }
 
     private void OnEnable()
     {
-        _wallet.CoinAmountChanged += SetTextCoinAmount;
+        _wallet.CoinAmountChanged += OnSetTextCoinAmount;
     }
 
     private void OnDisable()
     {
-        _wallet.CoinAmountChanged -= SetTextCoinAmount;
+        _wallet.CoinAmountChanged -= OnSetTextCoinAmount;
     }
 
-    private void SetTextCoinAmount(int amount)
+    private void OnSetTextCoinAmount(int amount)
     {
         _textCoinAmount.text = _text + " " + amount.ToString();
     }

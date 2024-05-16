@@ -1539,6 +1539,7 @@ GameObject:
   - component: {fileID: 1038596216}
   - component: {fileID: 1038596212}
   - component: {fileID: 1038596222}
+  - component: {fileID: 1038596224}
   m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
@@ -1780,7 +1781,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _amount: 0
-  _textCoinAmount: {fileID: 1932514974}
+  _coinDetector: {fileID: 1038596224}
 --- !u!114 &1038596223
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1794,6 +1795,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _jumpForce: 200
+--- !u!114 &1038596224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1038596211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4da6d772ebcd5947991a79d2ec9a591, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1054516363
 GameObject:
   m_ObjectHideFlags: 0
@@ -3089,6 +3102,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1654528724}
+  - component: {fileID: 1654528725}
   m_Layer: 0
   m_Name: UI
   m_TagString: Untagged
@@ -3112,6 +3126,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1654528725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1654528723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40208c5d7b264e1419437adcbf1861d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _textCoinAmount: {fileID: 1932514974}
+  _wallet: {fileID: 1038596222}
 --- !u!1 &1818821717
 GameObject:
   m_ObjectHideFlags: 0

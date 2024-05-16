@@ -1,7 +1,6 @@
 using UnityEngine;
 
-[RequireComponent(typeof(SpriteRenderer))]
-[RequireComponent(typeof(EnemyMover))]
+[RequireComponent(typeof(SpriteRenderer), typeof(EnemyMover))]
 public class EnemyFlipperX : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer _spriteRenderer;

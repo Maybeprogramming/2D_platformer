@@ -22,7 +22,7 @@ public class EnemyMover : Mover
 
     private void SetNextWaypoint()
     {
-        _currentWaypoint = (_currentWaypoint + 1) % _waypoints.Length;
+        _currentWaypoint = ++_currentWaypoint % _waypoints.Length;
         _targetPosition = new Vector2(_waypoints[_currentWaypoint].position.x, transform.position.y);
     }
 

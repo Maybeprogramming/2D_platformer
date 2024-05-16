@@ -1,7 +1,6 @@
 using UnityEngine;
 
-[RequireComponent(typeof(PlayerEntity))]
-[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(PlayerEntity), typeof(Rigidbody2D))]
 public class PlayerJumper : MonoBehaviour
 {
     [SerializeField] private float _jumpForce;

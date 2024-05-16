@@ -1,12 +1,12 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Animator))]
-[RequireComponent(typeof(PlayerEntity))]
+[RequireComponent(typeof(Animator), typeof(PlayerEntity))]
 public class PlayerAnimator : MonoBehaviour
 {
-    private const string Run = "Run";
     private const string Idle = "Idle";
+    private const string Run = "Run";
     private const string Jump = "Jump";
+    private const string Attack = "Attack";
     private const string Horizontal = "Horizontal";
 
     [SerializeField] private float moveDelta = 0.1f;
@@ -23,25 +23,30 @@ public class PlayerAnimator : MonoBehaviour
 
     private void Update()
     {
-        _playerMove = Input.GetAxis(nameof(Horizontal));
+        _playerMove = Input.GetAxis(Horizontal);
 
-        if(Mathf.Abs(_playerMove) > moveDelta && _player.IsGrounded == true)
+        if (Mathf.Abs(_playerMove) > moveDelta && _player.IsGrounded == true)
         {
-            _animator.SetTrigger(nameof(Run));
+            _animator.SetTrigger(Run);
         }
         else if (_player.IsGrounded == true)
         {
-            _animator.SetTrigger(nameof(Idle));
+            _animator.SetTrigger(Idle);
         }
 
         if (_player.IsGrounded == false)
         {
             JumpAnimation();
         }
+
+        if (Input.GetMouseButtonDown(0) == true)
+        {
+            _animator.SetTrigger(Attack);
+        }
     }
 
     private void JumpAnimation()
     {
-        _animator.SetTrigger(nameof(Jump));
+        _animator.SetTrigger(Jump);
     }
 }

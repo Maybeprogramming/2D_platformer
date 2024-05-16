@@ -1648,9 +1648,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1983a30ac3ed69249b31951edd4c6939, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _animator: {fileID: 0}
-  _playerMove: 0
-  _player: {fileID: 0}
+  moveDelta: 0.1
 --- !u!70 &1038596216
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -1727,7 +1725,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _detector: {fileID: 202445172}
   _radius: 0.05
-  _groundLayerMask:
+  _groundableLayerMask:
     serializedVersion: 2
     m_Bits: 64
 --- !u!114 &1038596219

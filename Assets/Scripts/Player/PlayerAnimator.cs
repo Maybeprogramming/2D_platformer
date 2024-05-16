@@ -1,11 +1,19 @@
-using System;
 using UnityEngine;
 
+[RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(PlayerEntity))]
 public class PlayerAnimator : MonoBehaviour
 {
-    [SerializeField] private Animator _animator;
-    [SerializeField] private float _playerMove;
-    [SerializeField] private PlayerEntity _player;
+    private const string Run = "Run";
+    private const string Idle = "Idle";
+    private const string Jump = "Jump";
+    private const string Horizontal = "Horizontal";
+
+    [SerializeField] private float moveDelta = 0.1f;
+
+    private float _playerMove;
+    private PlayerEntity _player;
+    private Animator _animator;
 
     private void Start()
     {
@@ -15,35 +23,25 @@ public class PlayerAnimator : MonoBehaviour
 
     private void Update()
     {
-        _playerMove = Input.GetAxis("Horizontal");
+        _playerMove = Input.GetAxis(nameof(Horizontal));
 
-        if(Mathf.Abs(_playerMove) > 0.1f && _player.IsGrounded == true)
+        if(Mathf.Abs(_playerMove) > moveDelta && _player.IsGrounded == true)
         {
-            _animator.SetTrigger("Run");
+            _animator.SetTrigger(nameof(Run));
         }
         else if (_player.IsGrounded == true)
         {
-            _animator.SetTrigger("Idle");
+            _animator.SetTrigger(nameof(Idle));
         }
 
         if (_player.IsGrounded == false)
         {
-            Jump();
-        }
-
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            _animator.SetTrigger("Attack");
-        }
-
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            _animator.SetTrigger("Dead");
+            JumpAnimation();
         }
     }
 
-    private void Jump()
+    private void JumpAnimation()
     {
-        _animator.SetTrigger("Jump");
+        _animator.SetTrigger(nameof(Jump));
     }
 }

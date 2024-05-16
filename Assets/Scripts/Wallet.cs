@@ -10,15 +10,15 @@ public class Wallet : MonoBehaviour
 
     private void OnEnable()
     {
-        _coinDetector.CoinDetected += OnCoinAdded;
+        _coinDetector.CoinDetected += OnCoinAdd;
     }
 
     private void OnDisable()
     {
-        _coinDetector.CoinDetected -= OnCoinAdded;
+        _coinDetector.CoinDetected -= OnCoinAdd;
     }
 
-    private void OnCoinAdded()
+    private void OnCoinAdd()
     {
         _amount++;
         CoinAmountChanged?.Invoke(_amount);

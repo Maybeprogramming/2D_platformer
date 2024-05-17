@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(Animator), typeof(PlayerEntity))]
 public class PlayerAnimator : MonoBehaviour
@@ -7,13 +9,20 @@ public class PlayerAnimator : MonoBehaviour
     private const string Run = "Run";
     private const string Jump = "Jump";
     private const string Attack = "Attack";
-    private const string Horizontal = "Horizontal";
+    private const string IsGround = "IsGround";
+    private const string MoveDirection = "MoveDirection";
 
-    [SerializeField] private float moveDelta = 0.1f;
+    [SerializeField] private float _directionZero = 0;
+    [SerializeField] private PlayerInputModule _playerInput;
 
-    private float _playerMove;
     private PlayerEntity _player;
     private Animator _animator;
+    private int moveDirection;
+
+    private void Awake()
+    {
+        _playerInput = GetComponent<PlayerInputModule>();
+    }
 
     private void Start()
     {
@@ -21,32 +30,32 @@ public class PlayerAnimator : MonoBehaviour
         _player = GetComponent<PlayerEntity>();
     }
 
-    private void Update()
+    private void OnEnable()
     {
-        _playerMove = Input.GetAxis(Horizontal);
-
-        if (Mathf.Abs(_playerMove) > moveDelta && _player.IsGrounded == true)
-        {
-            _animator.SetTrigger(Run);
-        }
-        else if (_player.IsGrounded == true)
-        {
-            _animator.SetTrigger(Idle);
-        }
-
-        if (_player.IsGrounded == false)
-        {
-            JumpAnimation();
-        }
-
-        if (Input.GetMouseButtonDown(0) == true)
-        {
-            _animator.SetTrigger(Attack);
-        }
+        _playerInput.AttackButtonDowned += OnAmimationAttacked;
+        _playerInput.JumpButtonDowned += OnAnimationJumped;
     }
 
-    private void JumpAnimation()
+    private void OnDisable()
+    {
+        _playerInput.AttackButtonDowned -= OnAmimationAttacked;
+        _playerInput.JumpButtonDowned -= OnAnimationJumped;
+    }
+
+    private void Update()
+    {
+        moveDirection = Mathf.Abs((int)_playerInput.MoveDirection.x);
+        _animator.SetBool(IsGround, _player.IsGrounded);
+        _animator.SetInteger(MoveDirection, moveDirection);
+    }
+
+    private void OnAnimationJumped()
     {
         _animator.SetTrigger(Jump);
+    }
+
+    private void OnAmimationAttacked()
+    {
+        _animator.SetTrigger(Attack);
     }
 }

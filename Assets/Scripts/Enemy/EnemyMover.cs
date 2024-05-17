@@ -25,7 +25,7 @@ public class EnemyMover : Mover
     {
         _currentWaypoint = ++_currentWaypoint % _waypoints.Length;
         _targetPosition = new Vector3(_waypoints[_currentWaypoint].position.x, transform.position.y, transform.position.z);
-        _moveDirectionX = new Vector2(transform.position.x - _targetPosition.x, Vector2.zero.y).normalized;
+        _moveDirectionX = new Vector2(transform.position.x - _targetPosition.x, 0f).normalized;
         _flipperAxisX.Flip(_moveDirectionX);
     }
 

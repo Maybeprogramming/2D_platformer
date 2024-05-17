@@ -3,10 +3,10 @@ using UnityEngine;
 [RequireComponent(typeof(SpriteRenderer))]
 public class FlipperAxisX : MonoBehaviour
 {
-    private SpriteRenderer _renderer;
-    private int _directionRawX;
+    [SerializeField] private SpriteRenderer _renderer;
+    [SerializeField] private int _directionRawX;
 
-    private void Start()
+    private void Awake()
     {
         _renderer = GetComponent<SpriteRenderer>();
     }

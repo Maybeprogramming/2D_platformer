@@ -1650,7 +1650,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1983a30ac3ed69249b31951edd4c6939, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveDelta: 0.1
+  _directionZero: 0
+  _playerInput: {fileID: 0}
 --- !u!70 &1038596216
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -1726,7 +1727,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _detector: {fileID: 202445172}
-  _radius: 0.05
+  _radius: 0.03
   _groundableLayerMask:
     serializedVersion: 2
     m_Bits: 64
@@ -1820,8 +1821,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9037facdc44647408b9d64c4122ad2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _directionRaw: {x: 0, y: 0}
-  _directionAxisX: 0
+  _moveDirection: {x: 0, y: 0}
 --- !u!1 &1054516363
 GameObject:
   m_ObjectHideFlags: 0

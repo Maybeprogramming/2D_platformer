@@ -6,6 +6,7 @@ public class EnemyMover : Mover
     [SerializeField] private Transform[] _waypoints;
 
     private FlipperAxisX _flipperAxisX;
+    private float minMagnitude = 0.1f;
     private int _currentWaypoint = 1;
     private Vector3 _targetPosition;
     private Vector2 _moveDirectionX;
@@ -25,13 +26,18 @@ public class EnemyMover : Mover
     {
         _currentWaypoint = ++_currentWaypoint % _waypoints.Length;
         _targetPosition = new Vector3(_waypoints[_currentWaypoint].position.x, transform.position.y, transform.position.z);
-        _moveDirectionX = new Vector2(transform.position.x - _targetPosition.x, 0f).normalized;
+        Flip();
+    }
+
+    private void Flip()
+    {
+        _moveDirectionX = new Vector2(transform.position.x - _targetPosition.x, Vector2.zero.y).normalized;
         _flipperAxisX.Flip(_moveDirectionX);
     }
 
     protected override void Move()
     {
-        if (transform.position.x != _targetPosition.x)
+        if ((transform.position - _targetPosition).sqrMagnitude >= minMagnitude)
         {
             transform.position = Vector2.MoveTowards(transform.position, _targetPosition, _speed * Time.deltaTime);
         }

@@ -1,6 +1,4 @@
-using System;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(Animator), typeof(PlayerEntity))]
 public class PlayerAnimator : MonoBehaviour

@@ -9,6 +9,7 @@ public class PlayerInputModule : MonoBehaviour
 
     public event Action AttackButtonDowned;
     public event Action JumpButtonDowned;
+    public event Action<Vector2> DirectionMoving;
 
     public Vector2 MoveDirection => _moveDirection;
 
@@ -22,13 +23,16 @@ public class PlayerInputModule : MonoBehaviour
         _input.Enable();
         _input.Player.Attack.performed += OnAttacked;
         _input.Player.Jump.performed += OnJumped;
+        _input.Player.Move.performed += OnMovingDirection;
     }
+
 
     private void OnDisable()
     {
         _input.Disable();
         _input.Player.Attack.performed -= OnAttacked;
         _input.Player.Jump.performed -= OnJumped;
+        _input.Player.Move.performed -= OnMovingDirection;
     }
 
     private void Update()
@@ -44,5 +48,10 @@ public class PlayerInputModule : MonoBehaviour
     private void OnAttacked(InputAction.CallbackContext context)
     {
         AttackButtonDowned?.Invoke();
+    }
+
+    private void OnMovingDirection(InputAction.CallbackContext context)
+    {
+        DirectionMoving?.Invoke(context.ReadValue<Vector2>());
     }
 }

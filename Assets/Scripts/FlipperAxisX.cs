@@ -1,10 +1,8 @@
 using UnityEngine;
 
 [RequireComponent(typeof(SpriteRenderer))]
-public class PlayerFlipperX : MonoBehaviour
+public class FlipperAxisX : MonoBehaviour
 {
-    private const string Horizontal = "Horizontal";
-
     private SpriteRenderer _renderer;
     private int _directionRawX;
 
@@ -13,14 +11,9 @@ public class PlayerFlipperX : MonoBehaviour
         _renderer = GetComponent<SpriteRenderer>();
     }
 
-    private void Update()
+    public void Flip(Vector2 direction)
     {
-        Flip();
-    }
-
-    public void Flip()
-    {
-        _directionRawX = (int)Input.GetAxisRaw(nameof(Horizontal));
+        _directionRawX = (int)direction.x;
 
         if (_directionRawX > 0)
         {

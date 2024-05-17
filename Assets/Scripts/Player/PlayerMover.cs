@@ -1,24 +1,31 @@
 using UnityEngine;
 
+[RequireComponent(typeof(PlayerInputModule), typeof(PlayerInputModule))]
 public class PlayerMover : Mover
 {
-    private float _direction;
-    private float _moveDelta = 0.1f;
+    private Vector2 _directionRaw;
+    private PlayerInputModule _playerInput;
+    private FlipperAxisX _flipperAxisX;
+
+    private void Awake()
+    {
+        _playerInput = GetComponent<PlayerInputModule>();
+    }
+    private void Start()
+    {
+        _flipperAxisX = GetComponent<FlipperAxisX>();
+    }
 
     private void Update()
-    {
+    {        
         Move();
     }
 
     protected override void Move()
     {
-        _direction = Input.GetAxis(Horizontal);
-
-        Vector2 nextPosition = Vector2.right * _direction * _speed * Time.deltaTime;
-
-        if (Mathf.Abs(_direction) > _moveDelta)
-        {
-            transform.Translate(nextPosition);
-        }
+        _directionRaw = _playerInput.MoveDirection;
+        _flipperAxisX.Flip(_directionRaw);
+        Vector2 nextPosition = _directionRaw * _speed * Time.deltaTime;
+        transform.Translate(nextPosition);
     }
 }

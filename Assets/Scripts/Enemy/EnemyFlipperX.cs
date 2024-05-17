@@ -12,20 +12,20 @@ public class EnemyFlipperX : MonoBehaviour
         _enemyMover = GetComponent<EnemyMover>();
     }
 
-    private void Update()
-    {
-        Flip();
-    }
+    //private void Update()
+    //{
+    //    Flip();
+    //}
 
-    private void Flip()
-    {
-        if (_enemyMover.MoveDirectionX < 0)
-        {
-            _spriteRenderer.flipX = false;
-        }
-        else if (_enemyMover.MoveDirectionX > 0)
-        {
-            _spriteRenderer.flipX = true;
-        }
-    }
+    //private void Flip()
+    //{
+    //    if (_enemyMover._moveDirectionX < 0)
+    //    {
+    //        _spriteRenderer.flipX = false;
+    //    }
+    //    else if (_enemyMover._moveDirectionX > 0)
+    //    {
+    //        _spriteRenderer.flipX = true;
+    //    }
+    //}
 }

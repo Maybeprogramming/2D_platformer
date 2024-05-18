@@ -5,6 +5,7 @@ public class PlayerAnimator : MonoBehaviour
 {
     private const string Jump = "Jump";
     private const string Attack = "Attack";
+    private const string Dead = "Dead";
     private const string IsGround = "IsGround";
     private const string MoveDirection = "MoveDirection";
 
@@ -16,24 +17,26 @@ public class PlayerAnimator : MonoBehaviour
     private void Awake()
     {
         _playerInput = GetComponent<PlayerInputModule>();
+        _player = GetComponent<PlayerEntity>();
     }
 
     private void Start()
     {
         _animator = GetComponent<Animator>();
-        _player = GetComponent<PlayerEntity>();
     }
 
     private void OnEnable()
     {
         _playerInput.AttackButtonDowned += OnAmimationAttacked;
         _playerInput.JumpButtonDowned += OnAnimationJumped;
+        _player.PlayerDead += OnAnimationDead;
     }
 
     private void OnDisable()
     {
         _playerInput.AttackButtonDowned -= OnAmimationAttacked;
         _playerInput.JumpButtonDowned -= OnAnimationJumped;
+        _player.PlayerDead -= OnAnimationDead;
     }
 
     private void Update()
@@ -51,5 +54,10 @@ public class PlayerAnimator : MonoBehaviour
     private void OnAmimationAttacked()
     {
         _animator.SetTrigger(Attack);
+    }
+
+    private void OnAnimationDead()
+    {
+        _animator.SetTrigger(Dead);
     }
 }

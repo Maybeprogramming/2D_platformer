@@ -14,7 +14,7 @@ public class SpawnPlayerOnStartGame : MonoBehaviour
         _playerDetectorOutWorld.PlayerOutWorldDetected -= OnPlayerRespawning;
     }
 
-    private void OnPlayerRespawning(PlayerEntity player)
+    private void OnPlayerRespawning(Player player)
     {
         player.transform.position = transform.position;
     }

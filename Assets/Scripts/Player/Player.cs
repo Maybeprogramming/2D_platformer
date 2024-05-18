@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 
 [RequireComponent(typeof(GroundDetector), typeof(Health))]
-public class PlayerEntity : MonoBehaviour
+public class Player : MonoBehaviour
 {
     [SerializeField] private bool _isGrounded;
     [SerializeField] private GroundDetector _groundDetector;

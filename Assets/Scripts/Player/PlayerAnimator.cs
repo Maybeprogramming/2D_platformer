@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Animator), typeof(PlayerEntity), typeof(PlayerInputModule))]
+[RequireComponent(typeof(Animator), typeof(Player), typeof(PlayerInputModule))]
 public class PlayerAnimator : MonoBehaviour
 {
     private const string Jump = "Jump";
@@ -10,14 +10,14 @@ public class PlayerAnimator : MonoBehaviour
     private const string MoveDirection = "MoveDirection";
 
     private PlayerInputModule _playerInput;
-    private PlayerEntity _player;
+    private Player _player;
     private Animator _animator;
     private int _moveDirectionRawX;
 
     private void Awake()
     {
         _playerInput = GetComponent<PlayerInputModule>();
-        _player = GetComponent<PlayerEntity>();
+        _player = GetComponent<Player>();
     }
 
     private void Start()

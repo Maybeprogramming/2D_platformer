@@ -1,11 +1,11 @@
 using UnityEngine;
 
-[RequireComponent(typeof(PlayerEntity), typeof(Rigidbody2D), typeof(PlayerInputModule))]
+[RequireComponent(typeof(Player), typeof(Rigidbody2D), typeof(PlayerInputModule))]
 public class PlayerJumper : MonoBehaviour
 {
     [SerializeField] private float _jumpForce;
 
-    private PlayerEntity _player;
+    private Player _player;
     private Rigidbody2D _rigidbody;
     private PlayerInputModule _playerInput;
 
@@ -16,7 +16,7 @@ public class PlayerJumper : MonoBehaviour
 
     private void Start()
     {
-        _player = GetComponent<PlayerEntity>();
+        _player = GetComponent<Player>();
         _rigidbody = GetComponent<Rigidbody2D>();
     }
     private void OnEnable()

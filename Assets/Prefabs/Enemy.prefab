@@ -200,7 +200,7 @@ GameObject:
   - component: {fileID: 6184058296798784274}
   - component: {fileID: 236566712455476860}
   m_Layer: 8
-  m_Name: EnemyModel
+  m_Name: EnemyView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -566,6 +566,10 @@ PrefabInstance:
     - target: {fileID: 8564152975071650426, guid: 265257116a789964a9dc103b84ed0056, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8960763226444367614, guid: 265257116a789964a9dc103b84ed0056, type: 3}
+      propertyPath: _speed
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 8960763226444367614, guid: 265257116a789964a9dc103b84ed0056, type: 3}
       propertyPath: _health

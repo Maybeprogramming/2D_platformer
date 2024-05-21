@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
     [SerializeField] private bool _isGrounded;
     [SerializeField] private GroundDetector _groundDetector;
     [SerializeField] private Health _health;
+    [SerializeField] private HeartDetector _heartDetector;
 
     public event Action PlayerDead;
 
@@ -21,16 +22,19 @@ public class Player : MonoBehaviour
     private void Start()
     {
         _groundDetector = GetComponent<GroundDetector>();
+        _heartDetector = GetComponent<HeartDetector>();
     }
 
     private void OnEnable()
     {
         _health.HealhtValueChanged += IsAlreadyDead;
+        _heartDetector.HeartDetected += OnHealing;
     }
 
     private void OnDisable()
     {
         _health.HealhtValueChanged -= IsAlreadyDead;
+        _heartDetector.HeartDetected -= OnHealing;
     }
 
     private void Update()
@@ -44,5 +48,10 @@ public class Player : MonoBehaviour
         {
             PlayerDead?.Invoke();
         }
+    }
+
+    private void OnHealing(Hearth hearth)
+    {
+        _health.Add(hearth.HealthPoint);
     }
 }

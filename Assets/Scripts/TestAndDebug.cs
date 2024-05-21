@@ -21,7 +21,7 @@ public class TestAndDebug : MonoBehaviour
         {
             foreach (Health health in _health)
             {
-                bool isRemove = health.Remove(_healthToAdd);
+                bool isRemove = health.Remove(_healthToRemove);
                 Debug.Log(isRemove);
             }
         }

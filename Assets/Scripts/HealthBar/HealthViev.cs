@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Slider))]
@@ -31,7 +32,7 @@ public class HealthViev : MonoBehaviour
 
     private void OnHealthChanged(float value)
     {
-        if (_smothChangedValue != null)
+        if (_smothChangedValue != null && gameObject.activeSelf == true)
         {
             StopCoroutine(_smothChangedValue);
         }
@@ -49,6 +50,7 @@ public class HealthViev : MonoBehaviour
 
         if (_slider.value == _health.MinValue)
         {
+            StopAllCoroutines();
             _slider.gameObject.SetActive(false);
         }
     }

@@ -4,6 +4,8 @@ public class Menu : MonoBehaviour
 {
     [SerializeField] private bool _isViewMenu = false;
     [SerializeField] private GameObject _menu;
+    [SerializeField] private PlayerInputModule _playerInputModule;
+    [SerializeField] private bool _isEnableInput = true;
 
     private void Start()
     {
@@ -15,6 +17,7 @@ public class Menu : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             ViewMenu();
+            EnablePlayerInput();
         }
     }
 
@@ -23,13 +26,12 @@ public class Menu : MonoBehaviour
         _isViewMenu = !_isViewMenu;
         _menu.SetActive(_isViewMenu);
 
-        if (_isViewMenu == true)
-        {
-            UnityEngine.Time.timeScale = 0f;
-        }
-        else
-        {
-            UnityEngine.Time.timeScale = 1f;
-        }
+        Time.timeScale = _isViewMenu == true ? 0f : 1f;
+    }
+
+    private void EnablePlayerInput()
+    {
+        _isEnableInput = !_isEnableInput;
+        _playerInputModule.enabled = _isEnableInput;
     }
 }

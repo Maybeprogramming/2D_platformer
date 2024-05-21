@@ -307,6 +307,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _isViewMenu: 0
   _menu: {fileID: 1828908741}
+  _playerInputModule: {fileID: 1038596225}
+  isEnableInput: 1
 --- !u!1 &16428661
 GameObject:
   m_ObjectHideFlags: 0

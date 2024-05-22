@@ -4,12 +4,12 @@ using UnityEngine;
 public class EnemyMover : Mover
 {
     [SerializeField] private Transform[] _waypoints;
+    [SerializeField] private Player _target;
 
     private FlipperAxisX _flipperAxisX;
     private float minMagnitude = 0.1f;
     private int _currentWaypoint = 1;
     private Vector3 _targetPosition;
-    private Vector2 _moveDirectionX;
 
     private void Start()
     {
@@ -19,7 +19,14 @@ public class EnemyMover : Mover
 
     private void Update()
     {
-        Move();
+        if (_target == null)
+        {
+            Move();
+        }
+        else
+        {
+            MoveToTarget(_target);
+        }
     }
 
     private void SetNextWaypoint()
@@ -32,7 +39,7 @@ public class EnemyMover : Mover
 
     private Vector2 GetMoveDirection()
     {
-        return _moveDirectionX = new Vector2(transform.position.x - _targetPosition.x, Vector2.zero.y).normalized;        
+        return new Vector2(transform.position.x - _targetPosition.x, Vector2.zero.y).normalized;
     }
 
     protected override void Move()
@@ -45,5 +52,10 @@ public class EnemyMover : Mover
         {
             SetNextWaypoint();
         }
+    }
+
+    private void MoveToTarget(Player player)
+    {
+
     }
 }

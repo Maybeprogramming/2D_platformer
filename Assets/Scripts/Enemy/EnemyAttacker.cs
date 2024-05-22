@@ -46,6 +46,7 @@ public class EnemyAttacker : MonoBehaviour
     private IEnumerator Attacker()
     {
         while (_player != null)
+
         {
             yield return beforeWaitTime;
             _player.TryTakeDamage(_damage);

@@ -3338,9 +3338,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e84292f7b1dbb464ebda4a62bfcf2fc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _healthPoint: 0
-  _damage: 0
-  _healthEntities: []
+  _healthPoint: 10
+  _damage: 5
+  _healthEntities:
+  - {fileID: 1038596227}
 --- !u!114 &1038596229
 MonoBehaviour:
   m_ObjectHideFlags: 0

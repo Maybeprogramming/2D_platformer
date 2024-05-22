@@ -2,14 +2,14 @@ using UnityEngine;
 
 public class Attacker : MonoBehaviour
 {
-    [SerializeField] private PlayerInputModule _playerInput;
-    [SerializeField] private Enemy _target;
-    [SerializeField] private float _damage;
     [SerializeField] private Transform _attackPoint;
     [SerializeField] private Transform _defaultAttackPoint;
+    [SerializeField] private float _damage;
     [SerializeField] private float _attackRadius;
-    [SerializeField] private LayerMask _layerMask;
     [SerializeField] private float _offset;
+    [SerializeField] private LayerMask _layerMask;
+    
+    private PlayerInputModule _playerInput;
 
     private void Awake()
     {
@@ -32,12 +32,9 @@ public class Attacker : MonoBehaviour
     {
         Collider2D enemy = Physics2D.OverlapCircle(new Vector2(_attackPoint.position.x, _attackPoint.position.y), _attackRadius, _layerMask);
 
-        if (enemy != null && enemy.TryGetComponent<Enemy>(out _target) == true)
+        if (enemy != null && enemy.TryGetComponent<Enemy>(out Enemy target) == true)
         {
-            if (_target != null && _target.TryGetComponent<Health>(out Health enemyHealth))
-            {
-                enemyHealth.Remove(_damage);
-            }
+            target.TryTakeDamage(_damage);
         }
     }
 

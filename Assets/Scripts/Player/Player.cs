@@ -4,10 +4,10 @@ using UnityEngine;
 [RequireComponent(typeof(GroundDetector), typeof(Health))]
 public class Player : MonoBehaviour
 {
-    [SerializeField] private bool _isGrounded;
-    [SerializeField] private GroundDetector _groundDetector;
-    [SerializeField] private Health _health;
-    [SerializeField] private HeartDetector _heartDetector;
+    private bool _isGrounded;
+    private GroundDetector _groundDetector;
+    private Health _health;
+    private HeartDetector _heartDetector;
 
     public event Action PlayerDead;
 
@@ -17,12 +17,12 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         _health = GetComponent<Health>();        
+        _heartDetector = GetComponent<HeartDetector>();
     }
 
     private void Start()
     {
         _groundDetector = GetComponent<GroundDetector>();
-        _heartDetector = GetComponent<HeartDetector>();
     }
 
     private void OnEnable()
@@ -40,6 +40,28 @@ public class Player : MonoBehaviour
     private void Update()
     {
         _isGrounded = _groundDetector.IsGrouded;
+    }
+
+    public bool TryTakeDamage(float damage)
+    {
+        if (IsAlive == false)
+        {
+            return false;
+        }
+
+        _health.Remove(damage);
+        return true;
+    }
+
+    public bool TryHealing(float healthPoint)
+    {
+        if (IsAlive == false)
+        {
+            return false;
+        }
+
+        _health.Add(healthPoint);
+        return true;
     }
 
     private void IsAlreadyDead(float currentHealthValue)

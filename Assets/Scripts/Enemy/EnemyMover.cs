@@ -26,13 +26,13 @@ public class EnemyMover : Mover
     {
         _currentWaypoint = ++_currentWaypoint % _waypoints.Length;
         _targetPosition = new Vector3(_waypoints[_currentWaypoint].position.x, transform.position.y, transform.position.z);
-        Flip();
+
+        _flipperAxisX.Flip(GetMoveDirection());
     }
 
-    private void Flip()
+    private Vector2 GetMoveDirection()
     {
-        _moveDirectionX = new Vector2(transform.position.x - _targetPosition.x, Vector2.zero.y).normalized;
-        _flipperAxisX.Flip(_moveDirectionX);
+        return _moveDirectionX = new Vector2(transform.position.x - _targetPosition.x, Vector2.zero.y).normalized;        
     }
 
     protected override void Move()

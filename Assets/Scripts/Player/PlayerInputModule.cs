@@ -4,8 +4,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerInputModule : MonoBehaviour
 {
-    [SerializeField] private PlayerInput _input;
-    [SerializeField] private Vector2 _moveDirection;
+    private PlayerInput _input;
+    private Vector2 _moveDirection;
 
     public event Action AttackButtonDowned;
     public event Action JumpButtonDowned;

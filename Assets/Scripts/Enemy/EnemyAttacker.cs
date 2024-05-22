@@ -1,14 +1,23 @@
-using System;
 using System.Collections;
 using UnityEngine;
 
 public class EnemyAttacker : MonoBehaviour
 {
     [SerializeField] private Player _player;
-    [SerializeField] private float _damage;
     [SerializeField] private PlayerDetector _playerDetector;
+    [SerializeField] private float _damage;
+    [SerializeField] private float beforeAttackTime = 0.2f;
+    [SerializeField] private float afterAttackTime = 1f;
 
     private Coroutine _attackerCoroutine;
+    private WaitForSeconds beforeWaitTime;
+    private WaitForSeconds afterWaitTime;
+
+    private void Start()
+    {
+        beforeWaitTime = new WaitForSeconds(beforeAttackTime);
+        afterWaitTime = new WaitForSeconds(afterAttackTime);
+    }
 
     private void OnEnable()
     {
@@ -36,18 +45,12 @@ public class EnemyAttacker : MonoBehaviour
 
     private IEnumerator Attacker()
     {
-        float elapsetTime = 1;
-
         while (_player != null)
         {
-            yield return new WaitForSeconds(0.2f);
+            yield return beforeWaitTime;
+            _player.TryTakeDamage(_damage);
 
-            if (/*_player != null &&*/ _player.TryGetComponent<Health>(out Health playerHealth))
-            {
-                playerHealth.Remove(_damage);
-            }
-
-            yield return new WaitForSeconds(elapsetTime);
+            yield return afterWaitTime;
         }
     }
 }

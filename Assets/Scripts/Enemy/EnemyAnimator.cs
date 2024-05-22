@@ -5,8 +5,8 @@ public class EnemyAnimator : MonoBehaviour
 {
     private const string Hit = "Hit";
 
-    [SerializeField] private Health _health;
-    [SerializeField] private Animator _animator;
+    private Health _health;
+    private Animator _animator;
 
     private void Awake()
     {

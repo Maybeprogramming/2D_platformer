@@ -1,14 +1,26 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Health))]
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] private Health _health;
+    private Health _health;
 
     public bool IsAlive => _health.CurrentValue > 0;
 
     private void Awake()
     {
         _health = GetComponent<Health>();
+    }
+
+    public bool TryTakeDamage(float damage)
+    {
+        if (IsAlive == false)
+        {
+            return false;
+        }
+
+        _health.Remove(damage);
+        return true;
     }
 
     private void OnEnable()

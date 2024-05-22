@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PlayerDetector : MonoBehaviour
 {
-    [SerializeField] private Player _player;
+    private Player _player;
 
     public event Action<Player> PlayerDetected;
     public event Action PlayerLost;

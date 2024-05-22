@@ -358,8 +358,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 0}
-  _damage: 2
   _playerDetector: {fileID: 4530840439350256841}
+  _damage: 3
+  beforeAttackTime: 0.2
+  afterAttackTime: 1
 --- !u!95 &3459237822634349724
 Animator:
   serializedVersion: 5

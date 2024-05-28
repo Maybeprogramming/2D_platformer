@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(SpriteFlipperAxisX))]
@@ -14,6 +15,9 @@ public class EnemyMover : Mover
     private float minMagnitude = 0.1f;
     private int _currentWaypoint = 1;
     private Vector3 _targetPosition;
+
+    public event Action Runing;
+    public event Action Walking;
 
     private void Start()
     {
@@ -51,17 +55,18 @@ public class EnemyMover : Mover
         _currentWaypoint = ++_currentWaypoint % _waypoints.Length;
         _targetPosition = new Vector3(_waypoints[_currentWaypoint].position.x, transform.position.y, transform.position.z);
 
-        _flipperAxisX.Flip(GetDirection());
-        _flipDetector.Flip(GetDirection());
+        _flipperAxisX.Flip(GetDirection(_targetPosition));
     }
 
-    private Vector2 GetDirection()
+    private Vector2 GetDirection(Vector3 targetPosition)
     {
-        return new Vector2(transform.position.x - _targetPosition.x, Vector2.zero.y).normalized;
+        return new Vector2(transform.position.x - targetPosition.x, Vector2.zero.y).normalized;
     }
 
     protected override void Move()
     {
+        Walking?.Invoke();
+
         if ((transform.position - _targetPosition).sqrMagnitude >= minMagnitude)
         {
             transform.position = Vector2.MoveTowards(transform.position, _targetPosition, _speed * Time.deltaTime);
@@ -76,8 +81,12 @@ public class EnemyMover : Mover
     {
         if (_target != null)
         {
-            Vector2 targetPosition = new Vector2(_target.transform.position.x, transform.position.y) + _offset * GetDirection();
+            Runing?.Invoke();
+
+            Vector2 targetPosition = new Vector2(_target.transform.position.x, transform.position.y) + _offset * GetDirection(_target.transform.position);
             transform.position = Vector2.MoveTowards(transform.position, targetPosition, _runSpeed * Time.deltaTime);
+
+            _flipperAxisX.Flip(GetDirection(targetPosition));
         }
     }
 
@@ -89,5 +98,6 @@ public class EnemyMover : Mover
     private void OnDeselectTarget()
     {
         _target = null;
+        SetNextWaypoint();
     }
 }

@@ -1,4 +1,4 @@
-using System.Collections;
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(Animator), typeof(EnemyAttacker))]
@@ -6,8 +6,12 @@ public class EnemyAnimator : MonoBehaviour
 {
     private const string Hit = "Hit";
     private const string Attack = "Attack";
+    private const string Run = "Run";
+    private const string Walk = "Walk";
+
 
     [SerializeField] private EnemyAttacker _attacker;
+    [SerializeField] private EnemyMover _mover;
     private Health _health;
     private Animator _animator;
 
@@ -15,6 +19,7 @@ public class EnemyAnimator : MonoBehaviour
     {
         _health = GetComponent<Health>();
         _attacker = GetComponent<EnemyAttacker>();
+        _mover = GetComponent<EnemyMover>();
     }
 
     private void Start()
@@ -26,12 +31,16 @@ public class EnemyAnimator : MonoBehaviour
     {
         _health.HealhtValueChanged += OnAnimationHit;
         _attacker.TargetAttacked += OnAnimationAttack;
+        _mover.Runing += OnAnimationRuning;
+        _mover.Walking += OnAnimationWalking;
     }
 
     private void OnDisable()
     {
         _health.HealhtValueChanged -= OnAnimationHit;
         _attacker.TargetAttacked -= OnAnimationAttack;
+        _mover.Runing -= OnAnimationRuning;
+        _mover.Walking -= OnAnimationWalking;
     }
 
     private void OnAnimationHit(float currentHealth)
@@ -42,5 +51,14 @@ public class EnemyAnimator : MonoBehaviour
     private void OnAnimationAttack()
     {
         _animator.SetTrigger(Attack);
+    }
+
+    private void OnAnimationRuning()
+    {
+        _animator.SetTrigger(Run);
+    }
+    private void OnAnimationWalking()
+    {
+        _animator.SetTrigger(Walk);
     }
 }

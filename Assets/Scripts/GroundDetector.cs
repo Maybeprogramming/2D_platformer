@@ -5,6 +5,7 @@ public class GroundDetector : MonoBehaviour
     [SerializeField] private Transform _detector;
     [SerializeField] private float _radius;
     [SerializeField] private LayerMask _groundableLayerMask;
+    [SerializeField] private Groundable _groundable;
 
     private Vector2 _point;
 
@@ -13,7 +14,12 @@ public class GroundDetector : MonoBehaviour
     private bool HasGrounded()
     {
         SetDetectorPointPosition();
-        return Physics2D.OverlapCircle(_point, _radius, _groundableLayerMask);
+
+        Collider2D detectedEntity = Physics2D.OverlapCircle(_point, _radius);
+        bool groundableEntity = detectedEntity.TryGetComponent(out _groundable);
+        bool groundableMask = Physics2D.OverlapCircle(_point, _radius, _groundableLayerMask);
+
+        return groundableMask || groundableEntity;
     }
 
     private void OnDrawGizmos()

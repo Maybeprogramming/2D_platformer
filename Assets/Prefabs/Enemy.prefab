@@ -152,7 +152,7 @@ PolygonCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 1, y: 0}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -164,9 +164,12 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -3, y: 0.2}
-      - {x: -3, y: -0.2}
-      - {x: -1, y: 0}
+    - - {x: 0, y: 0}
+      - {x: -1, y: 0.2}
+      - {x: -1, y: -0.2}
+      - {x: 0, y: 0}
+      - {x: 1, y: -0.2}
+      - {x: 1, y: 0.2}
   m_UseDelaunayMesh: 0
 --- !u!114 &4228917439857822162
 MonoBehaviour:
@@ -309,6 +312,7 @@ GameObject:
   - component: {fileID: 6184058296798784274}
   - component: {fileID: 236566712455476860}
   - component: {fileID: 8291277170446511296}
+  - component: {fileID: 3226955532900973997}
   m_Layer: 8
   m_Name: EnemyView
   m_TagString: Untagged
@@ -368,8 +372,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _targetForAttack: {fileID: 0}
   _detector: {fileID: 4228917439857822162}
-  _minDistanseToAttack: 2
-  _damage: 1
+  _minDistanseToAttack: 0.45
+  _damage: 2
   _beforeAttackTime: 0.2
   _afterAttackTime: 1
 --- !u!95 &3459237822634349724
@@ -567,6 +571,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 826a4d76e0881c74ba3b11105b9c6f39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3226955532900973997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8667243598240914646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 308d7a00552ed9b43bb1414da725a8e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &3572434428665126390

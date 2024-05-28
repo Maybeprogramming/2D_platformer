@@ -2281,6 +2281,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7965214117399201138, guid: 779320f0aa9e8dd4494dcec5e251cde0, type: 3}
+      propertyPath: _damage
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7965214117399201138, guid: 779320f0aa9e8dd4494dcec5e251cde0, type: 3}
+      propertyPath: _minDistanseToAttack
+      value: 0.35
+      objectReference: {fileID: 0}
     - target: {fileID: 8074746853187100555, guid: 779320f0aa9e8dd4494dcec5e251cde0, type: 3}
       propertyPath: m_Layer
       value: 8
@@ -3234,6 +3242,7 @@ MonoBehaviour:
   _groundableLayerMask:
     serializedVersion: 2
     m_Bits: 64
+  _groundable: {fileID: 0}
 --- !u!114 &1038596220
 MonoBehaviour:
   m_ObjectHideFlags: 0

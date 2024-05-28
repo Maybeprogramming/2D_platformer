@@ -11,11 +11,6 @@ public class PlayerDetector : MonoBehaviour
 
     public float Distance => _distance;
 
-    //private void Update()
-    //{
-    //    CalculateDistance();
-    //}
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.TryGetComponent<Player>(out _player))

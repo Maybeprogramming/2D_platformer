@@ -8,7 +8,7 @@ public class Attacker : MonoBehaviour
     [SerializeField] private float _attackRadius;
     [SerializeField] private float _offset;
     [SerializeField] private LayerMask _layerMask;
-    
+
     private PlayerInputModule _playerInput;
 
     private void Awake()
@@ -30,18 +30,18 @@ public class Attacker : MonoBehaviour
 
     private void OnAttacked()
     {
-        Collider2D enemy = Physics2D.OverlapCircle(new Vector2(_attackPoint.position.x, _attackPoint.position.y), _attackRadius, _layerMask);
+        Collider2D target = Physics2D.OverlapCircle(new Vector2(_attackPoint.position.x, _attackPoint.position.y), _attackRadius, _layerMask);
 
-        if (enemy != null && enemy.TryGetComponent<Enemy>(out Enemy target) == true)
+        if (target != null && target.TryGetComponent<Enemy>(out Enemy enemy) == true)
         {
-            target.TryTakeDamage(_damage);
+            enemy.TryTakeDamage(_damage);
         }
     }
 
     private void OnSetPointToAttack(Vector2 direction)
     {
-        float horizontalPosition = direction.x * _offset;
-        _attackPoint.transform.position = new Vector3(_defaultAttackPoint.position.x + horizontalPosition, _attackPoint.position.y, 0f);
+        float horizontalDirection = direction.x * _offset;
+        _attackPoint.transform.position = new Vector3(_defaultAttackPoint.position.x + horizontalDirection, _attackPoint.position.y, 0f);
     }
 
     private void OnDrawGizmos()

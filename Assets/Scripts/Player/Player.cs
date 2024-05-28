@@ -9,7 +9,8 @@ public class Player : MonoBehaviour
     private Health _health;
     private HeartDetector _heartDetector;
 
-    public event Action PlayerDead;
+    public event Action Died;
+    public event Action DamageReceived;
 
     public bool IsGrounded => _isGrounded;
     public bool IsAlive => _health.CurrentValue > 0;
@@ -50,6 +51,8 @@ public class Player : MonoBehaviour
         }
 
         _health.Remove(damage);
+        DamageReceived?.Invoke();
+
         return true;
     }
 
@@ -68,7 +71,7 @@ public class Player : MonoBehaviour
     {
         if (IsAlive == false)
         {
-            PlayerDead?.Invoke();
+            Died?.Invoke();
         }
     }
 

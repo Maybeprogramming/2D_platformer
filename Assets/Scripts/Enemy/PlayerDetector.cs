@@ -3,18 +3,31 @@ using UnityEngine;
 
 public class PlayerDetector : MonoBehaviour
 {
-    private Player _player;
+    [SerializeField] private float _distance = Single.MaxValue;
+    [SerializeField] private Player _player;
 
     public event Action<Player> PlayerDetected;
     public event Action PlayerLost;
+
+    public float Distance => _distance;
+
+    //private void Update()
+    //{
+    //    CalculateDistance();
+    //}
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.TryGetComponent<Player>(out _player))
         {
             PlayerDetected?.Invoke(_player);
-            Debug.Log("Player detected!");
+            Debug.Log("Detect");
         }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        CalculateDistance();
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -23,7 +36,14 @@ public class PlayerDetector : MonoBehaviour
         {
             _player = null;
             PlayerLost?.Invoke();
-            Debug.Log("Player lost!");
+            Debug.Log("Lost");
+        }
+    }
+    private void CalculateDistance()
+    {
+        if (_player != null)
+        {
+            _distance = Mathf.Abs((_player.transform.position - transform.position).magnitude);
         }
     }
 }

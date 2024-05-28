@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(Animator), typeof(Player), typeof(PlayerInputModule))]
@@ -6,6 +7,8 @@ public class PlayerAnimator : MonoBehaviour
     private const string Jump = "Jump";
     private const string Attack = "Attack";
     private const string Dead = "Dead";
+    private const string IsDead = "IsDead";
+    private const string Hit = "Hit";
     private const string IsGround = "IsGround";
     private const string MoveDirection = "MoveDirection";
 
@@ -29,14 +32,16 @@ public class PlayerAnimator : MonoBehaviour
     {
         _playerInput.AttackButtonDowned += OnAmimationAttacked;
         _playerInput.JumpButtonDowned += OnAnimationJumped;
-        _player.PlayerDead += OnAnimationDead;
+        _player.Died += OnAnimationDied;
+        _player.DamageReceived += OnAnimationHit;
     }
 
     private void OnDisable()
     {
         _playerInput.AttackButtonDowned -= OnAmimationAttacked;
         _playerInput.JumpButtonDowned -= OnAnimationJumped;
-        _player.PlayerDead -= OnAnimationDead;
+        _player.Died -= OnAnimationDied;
+        _player.DamageReceived -= OnAnimationHit;
     }
 
     private void Update()
@@ -56,8 +61,17 @@ public class PlayerAnimator : MonoBehaviour
         _animator.SetTrigger(Attack);
     }
 
-    private void OnAnimationDead()
+    private void OnAnimationDied()
     {
-        _animator.SetTrigger(Dead);
+        if (_player.IsAlive == false)
+        {
+            _animator.SetBool(IsDead, !_player.IsAlive);
+            _animator.SetTrigger(Dead);
+        }
+    }
+
+    private void OnAnimationHit()
+    {
+        _animator.SetTrigger(Hit);
     }
 }

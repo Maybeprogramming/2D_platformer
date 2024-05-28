@@ -5,14 +5,14 @@ using UnityEngine;
 public class EnemyAttacker : MonoBehaviour
 {
     [SerializeField] private Player _targetForAttack;
-    [SerializeField] private PlayerDetector _playerDetector;
+    [SerializeField] private PlayerDetector _detector;
     [SerializeField] private float _minDistanseToAttack;
-    [SerializeField] private float _distanseToTarget;
     [SerializeField] private float _damage;
     [SerializeField] private float _beforeAttackTime = 0.2f;
     [SerializeField] private float _afterAttackTime = 1f;
 
     private Coroutine _attackerCoroutine;
+    private Coroutine _drowerLineCoroutine;
     private WaitForSeconds _beforeWaitTime;
     private WaitForSeconds _afterWaitTime;
 
@@ -26,27 +26,19 @@ public class EnemyAttacker : MonoBehaviour
 
     private void OnEnable()
     {
-        _playerDetector.PlayerDetected += StartAttack;
-        _playerDetector.PlayerLost += StopAttack;
+        _detector.PlayerDetected += StartAttack;
+        _detector.PlayerLost += StopAttack;
     }
 
     private void OnDisable()
     {
-        _playerDetector.PlayerDetected -= StartAttack;
-        _playerDetector.PlayerLost -= StopAttack;
-    }
-
-    private void Update()
-    {
-        if (_targetForAttack != null)
-        {
-            _distanseToTarget = Mathf.Abs((_targetForAttack.transform.position - transform.position).magnitude);
-        }
+        _detector.PlayerDetected -= StartAttack;
+        _detector.PlayerLost -= StopAttack;
     }
 
     private void StopAttack()
     {
-        StopCoroutine(DrowLineToTarget());
+        StopCoroutine(_drowerLineCoroutine);
         StopCoroutine(_attackerCoroutine);
         _targetForAttack = null;
     }
@@ -55,26 +47,27 @@ public class EnemyAttacker : MonoBehaviour
     {
         _targetForAttack = player;
         _attackerCoroutine = StartCoroutine(Attacker());
-        StartCoroutine(DrowLineToTarget());
+        _drowerLineCoroutine = StartCoroutine(DrowerLineToTarget());
     }
 
     private IEnumerator Attacker()
     {
-        while (_targetForAttack != null)
+        while (true)
         {
             yield return _beforeWaitTime;
 
-            if (_distanseToTarget <= _minDistanseToAttack)
+            if (_targetForAttack != null && _detector.Distance <= _minDistanseToAttack)
             {
                 _targetForAttack.TryTakeDamage(_damage);
                 TargetAttacked?.Invoke();
+                yield return null;
             }
 
             yield return _afterWaitTime;
         }
     }
 
-    private IEnumerator DrowLineToTarget()
+    private IEnumerator DrowerLineToTarget()
     {
         while (_targetForAttack != null)
         {

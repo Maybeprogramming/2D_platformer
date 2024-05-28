@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(SpriteRenderer))]
-public class FlipperAxisX : MonoBehaviour
+public class SpriteFlipperAxisX : MonoBehaviour
 {
     private SpriteRenderer _renderer;
     private int _directionRawX;

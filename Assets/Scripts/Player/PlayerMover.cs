@@ -5,7 +5,7 @@ public class PlayerMover : Mover
 {
     private Vector2 _directionRaw;
     private PlayerInputModule _playerInput;
-    private FlipperAxisX _flipperAxisX;
+    private SpriteFlipperAxisX _flipperAxisX;
 
     private void Awake()
     {
@@ -13,7 +13,7 @@ public class PlayerMover : Mover
     }
     private void Start()
     {
-        _flipperAxisX = GetComponent<FlipperAxisX>();
+        _flipperAxisX = GetComponent<SpriteFlipperAxisX>();
     }
 
     private void Update()

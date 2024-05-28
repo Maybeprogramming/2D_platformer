@@ -368,7 +368,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _targetForAttack: {fileID: 0}
   _detector: {fileID: 4228917439857822162}
-  _minDistanseToAttack: 0.5
+  _minDistanseToAttack: 2
   _damage: 1
   _beforeAttackTime: 0.2
   _afterAttackTime: 1

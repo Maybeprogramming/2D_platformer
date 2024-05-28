@@ -3355,7 +3355,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _attackPoint: {fileID: 1143776436}
   _defaultAttackPoint: {fileID: 1679930968}
-  _damage: 0.5
+  _damage: 4
   _attackRadius: 0.2
   _offset: 0.2
   _layerMask:

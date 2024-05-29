@@ -45,9 +45,12 @@ public class EnemyAttacker : MonoBehaviour
 
     private void StartAttack(Player player)
     {
-        _targetForAttack = player;
-        _attackerCoroutine = StartCoroutine(Attacker());
-        _drowerLineCoroutine = StartCoroutine(DrowerLineToTarget());
+        if (player.IsAlive == true)
+        {
+            _targetForAttack = player;
+            _attackerCoroutine = StartCoroutine(Attacker());
+            _drowerLineCoroutine = StartCoroutine(DrowerLineToTarget());
+        }
     }
 
     private IEnumerator Attacker()

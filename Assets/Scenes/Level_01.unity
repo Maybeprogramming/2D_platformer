@@ -3051,6 +3051,7 @@ GameObject:
   - component: {fileID: 1038596216}
   - component: {fileID: 1038596212}
   - component: {fileID: 1038596231}
+  - component: {fileID: 1038596232}
   m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
@@ -3364,7 +3365,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _attackPoint: {fileID: 1143776436}
   _defaultAttackPoint: {fileID: 1679930968}
-  _damage: 4
+  _damage: 4.5
   _attackRadius: 0.2
   _offset: 0.2
   _layerMask:
@@ -3394,6 +3395,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 826a4d76e0881c74ba3b11105b9c6f39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1038596232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1038596211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dc9b1524d84c4e489b3e88178841be4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _player: {fileID: 0}
+  _input: {fileID: 0}
 --- !u!1 &1054516363
 GameObject:
   m_ObjectHideFlags: 0

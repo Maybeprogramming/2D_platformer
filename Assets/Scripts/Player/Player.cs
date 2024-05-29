@@ -1,7 +1,8 @@
 using System;
 using UnityEngine;
 
-[RequireComponent(typeof(GroundDetector), typeof(Health))]
+[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(GroundDetector), typeof(Health), typeof(CapsuleCollider2D))]
 public class Player : MonoBehaviour
 {
     private bool _isGrounded;
@@ -72,11 +73,18 @@ public class Player : MonoBehaviour
         if (IsAlive == false)
         {
             Died?.Invoke();
+            DisableCollider();
         }
+    }
+
+    private void DisableCollider()
+    {
+        gameObject.GetComponent<Rigidbody2D>().isKinematic = true;
+        gameObject.GetComponent<CapsuleCollider2D>().enabled = false;
     }
 
     private void OnHealing(Hearth hearth)
     {
-        _health.Add(hearth.HealthPoint);
+        TryHealing(hearth.HealthPoint);
     }
 }

@@ -3,7 +3,7 @@ using UnityEngine;
 [RequireComponent(typeof(PlayerInputModule), typeof(PlayerInputModule))]
 public class PlayerMover : Mover
 {
-    private Vector2 _directionRaw;
+    private float _directionRaw;
     private PlayerInputModule _playerInput;
     private SpriteFlipperAxisX _flipperAxisX;
 
@@ -23,9 +23,9 @@ public class PlayerMover : Mover
 
     protected override void Move()
     {
-        _directionRaw = _playerInput.MoveDirection;
+        _directionRaw = _playerInput.MoveDirection.x;
         _flipperAxisX.Flip(_directionRaw);
-        Vector2 nextPosition = _directionRaw * _speed * Time.deltaTime;
+        Vector2 nextPosition = Vector2.right * _directionRaw * _speed * Time.deltaTime;
         transform.Translate(nextPosition);
     }
 }

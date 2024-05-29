@@ -1,15 +1,17 @@
 using System;
+using TMPro;
 using UnityEngine;
 
 [RequireComponent(typeof(SpriteFlipperAxisX))]
 public class EnemyMover : Mover
 {
     [SerializeField] private Transform[] _waypoints;
-    [SerializeField] private Player _target;
+    [SerializeField] private Player _playerEntity;
     [SerializeField] private FlipDetector _flipDetector;
     [SerializeField] private PlayerDetector _playerDetector;
     [SerializeField] private float _runSpeed;
-    [SerializeField] private Vector2 _offset;
+    [SerializeField] private float _offset;
+    [SerializeField] private float minDistanceToTarget = 0.05f;
 
     private SpriteFlipperAxisX _flipperAxisX;
     private float minMagnitude = 0.1f;
@@ -40,7 +42,7 @@ public class EnemyMover : Mover
 
     private void Update()
     {
-        if (_target == null)
+        if (HasTargetEmpty())
         {
             Move();
         }
@@ -50,26 +52,34 @@ public class EnemyMover : Mover
         }
     }
 
+    private bool HasTargetEmpty()
+    {
+        if (_playerEntity == null || _playerEntity.IsAlive == false)
+        {
+            return true;
+        }
+
+        return false;
+    }
+
     private void SetNextWaypoint()
     {
         _currentWaypoint = ++_currentWaypoint % _waypoints.Length;
         _targetPosition = new Vector3(_waypoints[_currentWaypoint].position.x, transform.position.y, transform.position.z);
-
-        _flipperAxisX.Flip(GetDirection(_targetPosition));
     }
 
-    private Vector2 GetDirection(Vector3 targetPosition)
+    private float GetDirection(Vector3 targetPosition)
     {
-        return new Vector2(transform.position.x - targetPosition.x, Vector2.zero.y).normalized;
+        return new Vector2(transform.position.x - targetPosition.x, Vector2.zero.y).normalized.x;
     }
 
     protected override void Move()
     {
-        Walking?.Invoke();
-
         if ((transform.position - _targetPosition).sqrMagnitude >= minMagnitude)
         {
+            Walking?.Invoke();
             transform.position = Vector2.MoveTowards(transform.position, _targetPosition, _speed * Time.deltaTime);
+            _flipperAxisX.Flip(GetDirection(_targetPosition));
         }
         else
         {
@@ -79,12 +89,17 @@ public class EnemyMover : Mover
 
     private void MoveToTarget()
     {
-        if (_target != null)
+        if (_playerEntity != null && _playerEntity.IsAlive == true)
         {
-            Runing?.Invoke();
 
-            Vector2 targetPosition = new Vector2(_target.transform.position.x, transform.position.y) + _offset * GetDirection(_target.transform.position);
-            transform.position = Vector2.MoveTowards(transform.position, targetPosition, _runSpeed * Time.deltaTime);
+            Vector3 targetPosition = _playerEntity.transform.position;
+            Vector2 newPosition = new Vector2(targetPosition.x + _offset * GetDirection(targetPosition), transform.position.y);
+
+            if ((Mathf.Abs(newPosition.x - transform.position.x)) > minDistanceToTarget)
+            {
+                Runing?.Invoke();
+                transform.position = Vector2.MoveTowards(transform.position, newPosition, _runSpeed * Time.deltaTime);
+            }
 
             _flipperAxisX.Flip(GetDirection(targetPosition));
         }
@@ -92,12 +107,12 @@ public class EnemyMover : Mover
 
     private void OnSelectTarget(Player player)
     {
-        _target = player;
+        _playerEntity = player;
     }
 
     private void OnDeselectTarget()
     {
-        _target = null;
+        _playerEntity = null;
         SetNextWaypoint();
     }
 }

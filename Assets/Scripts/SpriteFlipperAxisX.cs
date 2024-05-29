@@ -4,22 +4,19 @@ using UnityEngine;
 public class SpriteFlipperAxisX : MonoBehaviour
 {
     private SpriteRenderer _renderer;
-    private int _directionRawX;
 
     private void Awake()
     {
         _renderer = GetComponent<SpriteRenderer>();
     }
 
-    public void Flip(Vector2 direction)
+    public void Flip(float directionAxisX)
     {
-        _directionRawX = (int)direction.x;
-
-        if (_directionRawX > 0)
+        if (directionAxisX > 0)
         {
             _renderer.flipX = false;
         }
-        else if (_directionRawX < 0)
+        else if (directionAxisX < 0)
         {
             _renderer.flipX = true;
         }

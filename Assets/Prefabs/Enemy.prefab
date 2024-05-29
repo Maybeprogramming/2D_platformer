@@ -164,11 +164,11 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: 0, y: 0}
-      - {x: -1, y: 0.2}
-      - {x: -1, y: -0.2}
+      - {x: -1, y: 0.15}
+      - {x: -1, y: -0.15}
       - {x: 0, y: 0}
-      - {x: 1, y: -0.2}
-      - {x: 1, y: 0.2}
+      - {x: 1, y: -0.15}
+      - {x: 1, y: 0.15}
   m_UseDelaunayMesh: 0
 --- !u!114 &8561331454950595267
 MonoBehaviour:
@@ -356,10 +356,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _targetForAttack: {fileID: 0}
   _detector: {fileID: 8561331454950595267}
-  _minDistanseToAttack: 0.42
+  _minDistanseToAttack: 0.45
   _damage: 4
-  _beforeAttackTime: 0.1
-  _afterAttackTime: 0.9
+  _beforeAttackTime: 0.08
+  _afterAttackTime: 0.92
 --- !u!95 &3459237822634349724
 Animator:
   serializedVersion: 5

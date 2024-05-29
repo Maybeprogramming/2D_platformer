@@ -18,14 +18,14 @@ public class PlayerMover : Mover
 
     private void Update()
     {        
-        Move();
+        WalkState();
     }
 
-    protected override void Move()
+    protected override void WalkState()
     {
         _directionRaw = _playerInput.MoveDirection.x;
         _flipperAxisX.Flip(_directionRaw);
-        Vector2 nextPosition = Vector2.right * _directionRaw * _speed * Time.deltaTime;
+        Vector2 nextPosition = Vector2.right * _directionRaw * _baseSpeed * Time.deltaTime;
         transform.Translate(nextPosition);
     }
 }

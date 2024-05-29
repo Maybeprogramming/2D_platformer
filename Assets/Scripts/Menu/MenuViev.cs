@@ -1,10 +1,12 @@
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Menu : MonoBehaviour
+public class MenuViev : MonoBehaviour
 {
-    [SerializeField] private bool _isViewMenu = false;
+    private const float PauseTime = 0f;
+    private const float ResumeTime = 1f;
+
+    [SerializeField] private bool _isViewMenuAtStart = false;
     [SerializeField] private GameObject _menu;
     [SerializeField] private PlayerInputModule _playerInputModule;
     [SerializeField] private bool _isEnableInput = true;
@@ -13,7 +15,7 @@ public class Menu : MonoBehaviour
 
     private void Start()
     {
-        _menu.SetActive(_isViewMenu);
+        _menu.SetActive(_isViewMenuAtStart);
     }
 
     private void OnEnable()
@@ -41,10 +43,10 @@ public class Menu : MonoBehaviour
 
     private void ViewMenu()
     {
-        _isViewMenu = !_isViewMenu;
-        _menu.SetActive(_isViewMenu);
+        _isViewMenuAtStart = !_isViewMenuAtStart;
+        _menu.SetActive(_isViewMenuAtStart);
 
-        Time.timeScale = _isViewMenu == true ? 0f : 1f;
+        Time.timeScale = _isViewMenuAtStart == true ? PauseTime : ResumeTime;
     }
 
     private void EnablePlayerInput()

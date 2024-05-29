@@ -25,15 +25,15 @@ public class Enemy : MonoBehaviour
 
     private void OnEnable()
     {
-        _health.HealhtValueChanged += IsAlreadyDead;
+        _health.HealhtValueChanged += IsDied;
     }
 
     private void OnDisable()
     {
-        _health.HealhtValueChanged -= IsAlreadyDead;
+        _health.HealhtValueChanged -= IsDied;
     }
 
-    private void IsAlreadyDead(float currentHealthValue)
+    private void IsDied(float currentHealthValue)
     {
         if (IsAlive == false)
         {

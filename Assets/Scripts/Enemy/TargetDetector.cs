@@ -1,13 +1,14 @@
 using System;
 using UnityEngine;
 
-public class PlayerDetector : MonoBehaviour
+public class TargetDetector : MonoBehaviour
 {
     [SerializeField] private float _distance = Single.MaxValue;
-    [SerializeField] private Player _player;
 
-    public event Action<Player> PlayerDetected;
-    public event Action PlayerLost;
+    private Player _player;
+
+    public event Action<Player> Detected;
+    public event Action Lost;
 
     public float Distance => _distance;
 
@@ -15,7 +16,7 @@ public class PlayerDetector : MonoBehaviour
     {
         if (collision.TryGetComponent<Player>(out _player))
         {
-            PlayerDetected?.Invoke(_player);
+            Detected?.Invoke(_player);
             Debug.Log("Detect");
         }
     }
@@ -30,7 +31,7 @@ public class PlayerDetector : MonoBehaviour
         if (collision.TryGetComponent<Player>(out _player))
         {
             _player = null;
-            PlayerLost?.Invoke();
+            Lost?.Invoke();
             Debug.Log("Lost");
         }
     }

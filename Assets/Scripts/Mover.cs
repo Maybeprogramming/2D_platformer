@@ -2,7 +2,7 @@ using UnityEngine;
 
 public abstract class Mover : MonoBehaviour
 {
-    [SerializeField] protected float _speed;
+    [SerializeField] protected float _baseSpeed;
 
-    protected virtual void Move() { }
+    protected virtual void WalkState() { }
 }

@@ -305,7 +305,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5afacac7894972e42a51aa6b31e7e8ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isViewMenu: 0
+  _isViewMenuAtStart: 0
   _menu: {fileID: 1828908741}
   _playerInputModule: {fileID: 1038596225}
   _isEnableInput: 1
@@ -1420,8 +1420,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 376485289}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.321, y: -0.75, z: 0}
-  m_LocalScale: {x: 3.6521873, y: 1, z: 1}
+  m_LocalPosition: {x: 2.982, y: -0.75, z: 0}
+  m_LocalScale: {x: 4.9732523, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2143430608}
@@ -2563,15 +2563,15 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 930937706c52eb84f9e3a3292fea17a7, type: 3}
---- !u!114 &875959471 stripped
+--- !u!114 &875959475 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4228917439857822162, guid: 779320f0aa9e8dd4494dcec5e251cde0, type: 3}
+  m_CorrespondingSourceObject: {fileID: 8561331454950595267, guid: 779320f0aa9e8dd4494dcec5e251cde0, type: 3}
   m_PrefabInstance: {fileID: 1410877033}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a53c0c0a6c4f6945818169003dec89b, type: 3}
+  m_Script: {fileID: 11500000, guid: b354991888fc53d458f4aaf709c1b352, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &887667434
@@ -3045,7 +3045,6 @@ GameObject:
   - component: {fileID: 1038596225}
   - component: {fileID: 1038596226}
   - component: {fileID: 1038596227}
-  - component: {fileID: 1038596228}
   - component: {fileID: 1038596229}
   - component: {fileID: 1038596217}
   - component: {fileID: 1038596216}
@@ -3140,7 +3139,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1038596211}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.009, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3239,7 +3238,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _detector: {fileID: 202445172}
-  _radius: 0.03
+  _radius: 0.06
   _groundableLayerMask:
     serializedVersion: 2
     m_Bits: 64
@@ -3256,7 +3255,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1de7df0391ee3f043a9dba462a3bd5b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 2
+  _baseSpeed: 2
 --- !u!114 &1038596222
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3335,22 +3334,6 @@ MonoBehaviour:
   _minValue: 0
   _maxValue: 20
   _currentValue: 0
---- !u!114 &1038596228
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1038596211}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e84292f7b1dbb464ebda4a62bfcf2fc6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _healthPoint: 10
-  _damage: 5
-  _healthEntities:
-  - {fileID: 1038596227}
 --- !u!114 &1038596229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4984,7 +4967,7 @@ PrefabInstance:
     - target: {fileID: 5617481153985055770, guid: 779320f0aa9e8dd4494dcec5e251cde0, type: 3}
       propertyPath: _playerDetector
       value: 
-      objectReference: {fileID: 875959471}
+      objectReference: {fileID: 875959475}
     - target: {fileID: 7326174722074159748, guid: 779320f0aa9e8dd4494dcec5e251cde0, type: 3}
       propertyPath: m_RootOrder
       value: -1
@@ -5426,8 +5409,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1538144001}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.302, y: -0.75, z: 0}
-  m_LocalScale: {x: 3.6521873, y: 1, z: 1}
+  m_LocalPosition: {x: -3, y: -0.75, z: 0}
+  m_LocalScale: {x: 5.0217576, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2143430608}
@@ -7149,6 +7132,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5455161650980315009, guid: 265257116a789964a9dc103b84ed0056, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 957155781}
     - target: {fileID: 8564152975071650426, guid: 265257116a789964a9dc103b84ed0056, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

@@ -1,7 +1,6 @@
-using System;
 using UnityEngine;
 
-[RequireComponent(typeof(Animator), typeof(EnemyAttacker))]
+[RequireComponent(typeof(Animator), typeof(EnemyAttacker), typeof(EnemyMover))]
 public class EnemyAnimator : MonoBehaviour
 {
     private const string Hit = "Hit";
@@ -9,9 +8,9 @@ public class EnemyAnimator : MonoBehaviour
     private const string Run = "Run";
     private const string Walk = "Walk";
 
-
     [SerializeField] private EnemyAttacker _attacker;
     [SerializeField] private EnemyMover _mover;
+
     private Health _health;
     private Animator _animator;
 
@@ -57,6 +56,7 @@ public class EnemyAnimator : MonoBehaviour
     {
         _animator.SetTrigger(Run);
     }
+
     private void OnAnimationWalking()
     {
         _animator.SetTrigger(Walk);

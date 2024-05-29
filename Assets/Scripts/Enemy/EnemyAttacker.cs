@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyAttacker : MonoBehaviour
 {
     [SerializeField] private Player _targetForAttack;
-    [SerializeField] private PlayerDetector _detector;
+    [SerializeField] private TargetDetector _detector;
     [SerializeField] private float _minDistanseToAttack;
     [SerializeField] private float _damage;
     [SerializeField] private float _beforeAttackTime = 0.2f;
@@ -26,14 +26,14 @@ public class EnemyAttacker : MonoBehaviour
 
     private void OnEnable()
     {
-        _detector.PlayerDetected += StartAttack;
-        _detector.PlayerLost += StopAttack;
+        _detector.Detected += BeginAttack;
+        _detector.Lost += StopAttack;
     }
 
     private void OnDisable()
     {
-        _detector.PlayerDetected -= StartAttack;
-        _detector.PlayerLost -= StopAttack;
+        _detector.Detected -= BeginAttack;
+        _detector.Lost -= StopAttack;
     }
 
     private void StopAttack()
@@ -43,7 +43,7 @@ public class EnemyAttacker : MonoBehaviour
         _targetForAttack = null;
     }
 
-    private void StartAttack(Player player)
+    private void BeginAttack(Player player)
     {
         if (player.IsAlive == true)
         {

@@ -28,7 +28,7 @@ public class EnemyAnimator : MonoBehaviour
 
     private void OnEnable()
     {
-        _health.HealhtValueChanged += OnAnimationHit;
+        _health.ValueChanged += OnAnimationHit;
         _attacker.TargetAttacked += OnAnimationAttack;
         _mover.Runing += OnAnimationRuning;
         _mover.Walking += OnAnimationWalking;
@@ -36,7 +36,7 @@ public class EnemyAnimator : MonoBehaviour
 
     private void OnDisable()
     {
-        _health.HealhtValueChanged -= OnAnimationHit;
+        _health.ValueChanged -= OnAnimationHit;
         _attacker.TargetAttacked -= OnAnimationAttack;
         _mover.Runing -= OnAnimationRuning;
         _mover.Walking -= OnAnimationWalking;

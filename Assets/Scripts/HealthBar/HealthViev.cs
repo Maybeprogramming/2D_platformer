@@ -9,7 +9,8 @@ public class HealthViev : MonoBehaviour
     [SerializeField] private float _speed;
 
     private Slider _slider;
-    private Coroutine _smothChangedValue;
+    private Coroutine _smoothHealthFilling;
+    private bool isBarActive = false;
 
     private void Start()
     {
@@ -21,25 +22,25 @@ public class HealthViev : MonoBehaviour
 
     private void OnEnable()
     {
-        _health.HealhtValueChanged += OnHealthChanged;
+        _health.ValueChanged += OnHealthChanged;
     }
 
     private void OnDisable()
     {
-        _health.HealhtValueChanged -= OnHealthChanged;
+        _health.ValueChanged -= OnHealthChanged;
     }
 
     private void OnHealthChanged(float value)
     {
-        if (_smothChangedValue != null && gameObject.activeSelf == true)
+        if (_smoothHealthFilling != null && gameObject.activeSelf == true)
         {
-            StopCoroutine(_smothChangedValue);
+            StopCoroutine(_smoothHealthFilling);
         }
 
-        _smothChangedValue = StartCoroutine(SmothSliderValue(value));
+        _smoothHealthFilling = StartCoroutine(SmoothValueFilling(value));
     }
 
-    IEnumerator SmothSliderValue(float currentHealthValue)
+    private IEnumerator SmoothValueFilling(float currentHealthValue)
     {
         while (_slider.value != currentHealthValue)
         {
@@ -50,7 +51,7 @@ public class HealthViev : MonoBehaviour
         if (_slider.value == _health.MinValue)
         {
             StopAllCoroutines();
-            _slider.gameObject.SetActive(false);
+            _slider.gameObject.SetActive(isBarActive);
         }
     }
 }

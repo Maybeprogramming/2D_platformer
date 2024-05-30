@@ -29,13 +29,13 @@ public class Player : MonoBehaviour
 
     private void OnEnable()
     {
-        _health.HealhtValueChanged += IsAlreadyDead;
+        _health.ValueChanged += IsAlreadyDead;
         _heartDetector.HeartDetected += OnHealing;
     }
 
     private void OnDisable()
     {
-        _health.HealhtValueChanged -= IsAlreadyDead;
+        _health.ValueChanged -= IsAlreadyDead;
         _heartDetector.HeartDetected -= OnHealing;
     }
 

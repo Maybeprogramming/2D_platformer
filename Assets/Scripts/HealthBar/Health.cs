@@ -7,7 +7,7 @@ public class Health : MonoBehaviour
     [SerializeField] private float _maxValue;
     [SerializeField] private float _currentValue;
 
-    public event Action<float> HealhtValueChanged;
+    public event Action<float> ValueChanged;
 
     public float MaxValue => _maxValue;
     public float MinValue => _minValue;
@@ -20,39 +20,29 @@ public class Health : MonoBehaviour
 
     public bool Add(float value)
     {
-        if (value <= 0 || _currentValue == _maxValue)
-        {
-            return false;
-        }
+        float newValue = Mathf.Clamp(_currentValue + value, _minValue, _maxValue);
 
-        if (_currentValue + value >= _maxValue)
+        if (_currentValue != newValue)
         {
-            _currentValue = _maxValue;
-            HealhtValueChanged?.Invoke(_currentValue);
+            _currentValue = newValue;
+            ValueChanged?.Invoke(_currentValue);
             return true;
         }
 
-        _currentValue += value;
-        HealhtValueChanged?.Invoke(_currentValue);
-        return true;
+        return false;
     }
 
     public bool Remove(float value)
     {
-        if (value <= 0 || _currentValue == _minValue)
-        {
-            return false;
-        }
+        float newValue = Mathf.Clamp(_currentValue - value, _minValue, _maxValue);
 
-        if (_currentValue - value <= _minValue)
+        if (_currentValue != newValue)
         {
-            _currentValue = _minValue;
-            HealhtValueChanged?.Invoke(_currentValue);
+            _currentValue = newValue;
+            ValueChanged?.Invoke(_currentValue);
             return true;
         }
 
-        _currentValue -= value;
-        HealhtValueChanged?.Invoke(_currentValue);
-        return true;
+        return false;
     }
 }

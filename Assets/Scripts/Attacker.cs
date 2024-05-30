@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[RequireComponent(typeof(PlayerInputModule))]
 public class Attacker : MonoBehaviour
 {
     [SerializeField] private Transform _attackPoint;

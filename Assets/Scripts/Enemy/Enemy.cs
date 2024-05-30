@@ -12,6 +12,16 @@ public class Enemy : MonoBehaviour
         _health = GetComponent<Health>();
     }
 
+    private void OnEnable()
+    {
+        _health.ValueChanged += OnIsDied;
+    }
+
+    private void OnDisable()
+    {
+        _health.ValueChanged -= OnIsDied;
+    }
+
     public bool TryTakeDamage(float damage)
     {
         if (IsAlive == false)
@@ -23,17 +33,7 @@ public class Enemy : MonoBehaviour
         return true;
     }
 
-    private void OnEnable()
-    {
-        _health.ValueChanged += IsDied;
-    }
-
-    private void OnDisable()
-    {
-        _health.ValueChanged -= IsDied;
-    }
-
-    private void IsDied(float currentHealthValue)
+    private void OnIsDied(float currentHealthValue)
     {
         if (IsAlive == false)
         {

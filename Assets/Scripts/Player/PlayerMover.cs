@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[RequireComponent(typeof(PlayerInputModule), typeof(PlayerInputModule))]
+[RequireComponent(typeof(SpriteFlipperAxisX), typeof(PlayerInputModule))]
 public class PlayerMover : Mover
 {
     private float _directionRaw;
@@ -25,7 +25,7 @@ public class PlayerMover : Mover
     {
         _directionRaw = _playerInput.MoveDirection.x;
         _flipperAxisX.Flip(_directionRaw);
-        Vector2 nextPosition = Vector2.right * _directionRaw * _baseSpeed * Time.deltaTime;
+        Vector2 nextPosition = Vector2.right * _directionRaw * BaseSpeed * Time.deltaTime;
         transform.Translate(nextPosition);
     }
 }

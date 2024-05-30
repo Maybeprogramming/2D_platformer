@@ -8,7 +8,7 @@ public class EnemyMover : Mover
     [SerializeField] private TargetDetector _playerDetector;
     [SerializeField] private float _runSpeed;
     [SerializeField] private float _offsetRange;
-    [SerializeField] private float minDistanceToTarget = 0.05f;
+    [SerializeField] private float _minDistanceToTarget = 0.05f;
 
     private Player _playerEntity;
     private SpriteFlipperAxisX _flipperAxisX;
@@ -75,7 +75,7 @@ public class EnemyMover : Mover
         if ((transform.position - _targetPosition).sqrMagnitude >= minMagnitude)
         {
             Walking?.Invoke();
-            transform.position = Vector2.MoveTowards(transform.position, _targetPosition, _baseSpeed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, _targetPosition, BaseSpeed * Time.deltaTime);
             _flipperAxisX.Flip(GetDirection(_targetPosition));
         }
         else
@@ -92,7 +92,7 @@ public class EnemyMover : Mover
             Vector3 targetPosition = _playerEntity.transform.position;
             Vector2 newPosition = new Vector2(targetPosition.x + _offsetRange * GetDirection(targetPosition), transform.position.y);
 
-            if ((Mathf.Abs(newPosition.x - transform.position.x)) > minDistanceToTarget)
+            if ((Mathf.Abs(newPosition.x - transform.position.x)) > _minDistanceToTarget)
             {
                 Runing?.Invoke();
                 transform.position = Vector2.MoveTowards(transform.position, newPosition, _runSpeed * Time.deltaTime);

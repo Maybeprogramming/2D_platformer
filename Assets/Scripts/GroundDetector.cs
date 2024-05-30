@@ -17,7 +17,8 @@ public class GroundDetector : MonoBehaviour
 
         bool groundableMask = Physics2D.OverlapCircle(_point, _radius, _groundableLayerMask);
         Collider2D detectedEntity = Physics2D.OverlapCircle(_point, _radius);
-        bool groundableEntity = detectedEntity.TryGetComponent(out _groundable);
+        detectedEntity.TryGetComponent(out _groundable);
+        bool groundableEntity = _groundable != null ? true : false;
 
         return groundableMask || groundableEntity;
     }

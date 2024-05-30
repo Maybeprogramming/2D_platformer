@@ -1,24 +1,31 @@
 using System;
 using UnityEngine;
 
+[RequireComponent(typeof(CoinDetector))]
 public class Wallet : MonoBehaviour
 {
     [SerializeField] private int _amount;
-    [SerializeField] private CoinDetector _coinDetector;
+    
+    private CoinDetector _coinDetector;
+
+    private void Awake()
+    {
+        _coinDetector = GetComponent<CoinDetector>();   
+    }
 
     public event Action<int> CoinAmountChanged;
 
     private void OnEnable()
     {
-        _coinDetector.CoinDetected += OnCoinAdd;
+        _coinDetector.EntityDetected += OnCoinAdd;
     }
 
     private void OnDisable()
     {
-        _coinDetector.CoinDetected -= OnCoinAdd;
+        _coinDetector.EntityDetected -= OnCoinAdd;
     }
 
-    private void OnCoinAdd()
+    private void OnCoinAdd(Coin coin)
     {
         _amount++;
         CoinAmountChanged?.Invoke(_amount);

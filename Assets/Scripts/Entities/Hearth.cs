@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Hearth : MonoBehaviour
+public class Hearth : IPickable
 {
     [SerializeField] private float _healthPoint;
 

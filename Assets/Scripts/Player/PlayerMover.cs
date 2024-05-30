@@ -17,7 +17,7 @@ public class PlayerMover : Mover
     }
 
     private void Update()
-    {        
+    {
         WalkState();
     }
 

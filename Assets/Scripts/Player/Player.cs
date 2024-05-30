@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Rigidbody2D), typeof(HeartDetector))]
 [RequireComponent(typeof(GroundDetector), typeof(Health), typeof(CapsuleCollider2D))]
 public class Player : MonoBehaviour
 {
@@ -30,13 +30,13 @@ public class Player : MonoBehaviour
     private void OnEnable()
     {
         _health.ValueChanged += IsAlreadyDead;
-        _heartDetector.HeartDetected += OnHealing;
+        _heartDetector.EntityDetected += OnHealing;
     }
 
     private void OnDisable()
     {
         _health.ValueChanged -= IsAlreadyDead;
-        _heartDetector.HeartDetected -= OnHealing;
+        _heartDetector.EntityDetected -= OnHealing;
     }
 
     private void Update()

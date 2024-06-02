@@ -10,6 +10,6 @@ public class MainMenu : MonoBehaviour
 
     private void Update()
     {
-        _button.animationTriggers.normalTrigger = "";
+        //_button.animationTriggers.normalTrigger = "";
     }
 }

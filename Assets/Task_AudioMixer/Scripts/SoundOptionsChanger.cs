@@ -27,9 +27,9 @@ public class SoundOptionsChanger : MonoBehaviour
     [SerializeField] private Slider _musicVolumeSlider;
     [SerializeField] private Slider _buttonsVolumeSlider;
 
-    private float masterVolumeLevel;
-    private float musicVolumeLevel;
-    private float buttonsVolumeLevel;
+    private float _masterVolumeLevel;
+    private float _musicVolumeLevel;
+    private float _buttonsVolumeLevel;
     private bool _isSoundVolumeMuted;
 
     public event Action<bool> SoundMuteChanged;
@@ -63,20 +63,20 @@ public class SoundOptionsChanger : MonoBehaviour
 
     public void SetMasterVolume()
     {
-        masterVolumeLevel = GetNormalizedSoundVolume(_masterVolumeSlider.value);
-        _audioMixer.SetFloat(MasterVolumeTag, masterVolumeLevel);
+        _masterVolumeLevel = GetNormalizedSoundVolume(_masterVolumeSlider.value);
+        _audioMixer.SetFloat(MasterVolumeTag, _masterVolumeLevel);
     }
 
     public void SetMusicVolume()
     {
-        musicVolumeLevel = GetNormalizedSoundVolume(_musicVolumeSlider.value);
-        _audioMixer.SetFloat(MusicVolumeTag, musicVolumeLevel);
+        _musicVolumeLevel = GetNormalizedSoundVolume(_musicVolumeSlider.value);
+        _audioMixer.SetFloat(MusicVolumeTag, _musicVolumeLevel);
     }
 
     public void SetButtonsSoundVolume()
     {
-        buttonsVolumeLevel = GetNormalizedSoundVolume(_buttonsVolumeSlider.value);
-        _audioMixer.SetFloat(ButtonsVolumeTag, buttonsVolumeLevel);
+        _buttonsVolumeLevel = GetNormalizedSoundVolume(_buttonsVolumeSlider.value);
+        _audioMixer.SetFloat(ButtonsVolumeTag, _buttonsVolumeLevel);
     }
 
     private float GetNormalizedSoundVolume(float value)

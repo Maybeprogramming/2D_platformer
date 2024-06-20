@@ -723,7 +723,7 @@ MonoBehaviour:
   _audioSourceButton1: {fileID: 325436444}
   _audioSourceButton2: {fileID: 1297207085}
   _audioSourceButton3: {fileID: 1930948780}
-  _musicAudioClip: {fileID: 0}
+  _musicAudioClip: {fileID: 8300000, guid: 8acd67cb6d7ad404fa41a3bd562cc453, type: 3}
   _buttonAudioClip1: {fileID: 0}
   _buttonAudioClip2: {fileID: 0}
   _buttonAudioClip3: {fileID: 0}
@@ -1037,6 +1037,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2428128022035840666, guid: cb1b635437fc1f344a1325a17141a664, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -50
+      objectReference: {fileID: 0}
+    - target: {fileID: 2428128022035840666, guid: cb1b635437fc1f344a1325a17141a664, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2896469861412420533, guid: cb1b635437fc1f344a1325a17141a664, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1270,6 +1278,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7091661281574718719, guid: cb1b635437fc1f344a1325a17141a664, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7622454579969038807, guid: cb1b635437fc1f344a1325a17141a664, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}

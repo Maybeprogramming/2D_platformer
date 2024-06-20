@@ -30,40 +30,56 @@ public class SoundOptionsChanger : MonoBehaviour
     private float masterVolumeLevel;
     private float musicVolumeLevel;
     private float buttonsVolumeLevel;
+    private bool _isSoundVolumeMuted;
+
+    public event Action<bool> SoundMuteChanged;
+
 
     private void Start()
     {
-        //_audioSourceMusic.clip = _musicAudioClip;
+        _audioSourceMusic.clip = _musicAudioClip;
         //_audioSourceButton1.clip = _buttonAudioClip1;
         //_audioSourceButton2.clip = _buttonAudioClip2;
         //_audioSourceButton3.clip = _buttonAudioClip3;
 
+        _audioSourceMusic.Play();
+    }
+
+    private void OnEnable()
+    {
         _soundButton1.onClick.AddListener(OnPlayOneShootSound);
         _soundButton2.onClick.AddListener(OnPlayOneShootSound);
         _soundButton3.onClick.AddListener(OnPlayOneShootSound);
-        _masterVolumeButton.onClick.AddListener(OnSetMasterSound);
+        _masterVolumeButton.onClick.AddListener(OnSoundVolumeMute);
+    }
+
+    private void OnDisable()
+    {
+        _soundButton1.onClick.RemoveListener(OnPlayOneShootSound);
+        _soundButton2.onClick.RemoveListener(OnPlayOneShootSound);
+        _soundButton3.onClick.RemoveListener(OnPlayOneShootSound);
+        _masterVolumeButton.onClick.RemoveListener(OnSoundVolumeMute);
     }
 
     public void SetMasterVolume()
     {
-        masterVolumeLevel = GetNormalizedSoundValue(_masterVolumeSlider.value);
+        masterVolumeLevel = GetNormalizedSoundVolume(_masterVolumeSlider.value);
         _audioMixer.SetFloat(MasterVolumeTag, masterVolumeLevel);
     }
 
-
     public void SetMusicVolume()
     {
-        musicVolumeLevel = GetNormalizedSoundValue(_musicVolumeSlider.value);
+        musicVolumeLevel = GetNormalizedSoundVolume(_musicVolumeSlider.value);
         _audioMixer.SetFloat(MusicVolumeTag, musicVolumeLevel);
     }
 
     public void SetButtonsSoundVolume()
     {
-        buttonsVolumeLevel = GetNormalizedSoundValue(_buttonsVolumeSlider.value);
+        buttonsVolumeLevel = GetNormalizedSoundVolume(_buttonsVolumeSlider.value);
         _audioMixer.SetFloat(ButtonsVolumeTag, buttonsVolumeLevel);
     }
 
-    private float GetNormalizedSoundValue(float value)
+    private float GetNormalizedSoundVolume(float value)
     {
         return Mathf.Log10(value) * 20;
     }
@@ -73,14 +89,17 @@ public class SoundOptionsChanger : MonoBehaviour
         Debug.Log("Play One Shoot");
     }
 
-    private void OnSetMasterSound()
+    private void OnSoundVolumeMute()
     {
         _audioSourceButton1.mute = !_audioSourceButton1.mute;
         _audioSourceButton2.mute = !_audioSourceButton2.mute;
         _audioSourceButton3.mute = !_audioSourceButton3.mute;
         _audioSourceMusic.mute = !_audioSourceMusic.mute;
 
-        TMP_Text text = _masterVolumeButton.GetComponent<TMP_Text>();
+        _isSoundVolumeMuted = _audioSourceMusic.mute;
+        SoundMuteChanged?.Invoke(_isSoundVolumeMuted);
+
+        TextMeshProUGUI text = _masterVolumeButton.gameObject.GetComponentInChildren<TextMeshProUGUI>();
         text.text = _audioSourceButton1.mute == false ? "Turn sound Off" : "Turn sound On";
     }
 }

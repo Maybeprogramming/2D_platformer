@@ -38,26 +38,26 @@ public class SoundOptionsChanger : MonoBehaviour
     private void Start()
     {
         _audioSourceMusic.clip = _musicAudioClip;
-        //_audioSourceButton1.clip = _buttonAudioClip1;
-        //_audioSourceButton2.clip = _buttonAudioClip2;
-        //_audioSourceButton3.clip = _buttonAudioClip3;
+        _audioSourceButton1.clip = _buttonAudioClip1;
+        _audioSourceButton2.clip = _buttonAudioClip2;
+        _audioSourceButton3.clip = _buttonAudioClip3;
 
         _audioSourceMusic.Play();
     }
 
     private void OnEnable()
     {
-        _soundButton1.onClick.AddListener(OnPlayOneShootSound);
-        _soundButton2.onClick.AddListener(OnPlayOneShootSound);
-        _soundButton3.onClick.AddListener(OnPlayOneShootSound);
+        _soundButton1.onClick.AddListener(OnPlayOneShootSound1);
+        _soundButton2.onClick.AddListener(OnPlayOneShootSound2);
+        _soundButton3.onClick.AddListener(OnPlayOneShootSound3);
         _masterVolumeButton.onClick.AddListener(OnSoundVolumeMute);
     }
 
     private void OnDisable()
     {
-        _soundButton1.onClick.RemoveListener(OnPlayOneShootSound);
-        _soundButton2.onClick.RemoveListener(OnPlayOneShootSound);
-        _soundButton3.onClick.RemoveListener(OnPlayOneShootSound);
+        _soundButton1.onClick.RemoveListener(OnPlayOneShootSound1);
+        _soundButton2.onClick.RemoveListener(OnPlayOneShootSound2);
+        _soundButton3.onClick.RemoveListener(OnPlayOneShootSound3);
         _masterVolumeButton.onClick.RemoveListener(OnSoundVolumeMute);
     }
 
@@ -84,9 +84,22 @@ public class SoundOptionsChanger : MonoBehaviour
         return Mathf.Log10(value) * 20;
     }
 
-    private void OnPlayOneShootSound()
+    private void OnPlayOneShootSound1()
     {
-        Debug.Log("Play One Shoot");
+        Debug.Log("Play One Shoot 1");
+        _audioSourceButton1.PlayOneShot(_buttonAudioClip1);
+    }    
+    
+    private void OnPlayOneShootSound2()
+    {
+        Debug.Log("Play One Shoot 2");
+        _audioSourceButton2.PlayOneShot(_buttonAudioClip2);
+    }    
+    
+    private void OnPlayOneShootSound3()
+    {
+        Debug.Log("Play One Shoot 3");
+        _audioSourceButton3.PlayOneShot(_buttonAudioClip3);
     }
 
     private void OnSoundVolumeMute()

@@ -35,7 +35,7 @@ public class PlaySound : MonoBehaviour
         _masterVolumeButton?.onClick.AddListener(OnSoundMuted);
     }
 
-    public virtual void OnPlaySound()
+    public void OnPlaySound()
     {
         _audioSource.PlayOneShot(_audioClip);
         Debug.Log($"Sound played on <{gameObject.name}> button");

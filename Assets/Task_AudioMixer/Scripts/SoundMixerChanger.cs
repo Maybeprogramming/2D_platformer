@@ -1,4 +1,3 @@
-using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
@@ -26,11 +25,6 @@ public class SoundMixerChanger : MonoBehaviour
     private float _musicVolumeLevel;
     private float _buttonsVolumeLevel;
 
-    private void Awake()
-    {
-
-    }
-
     private void Start()
     {
         InitAudioSource(_buttonAttack, _buttonMasterVolume, _attackSound);
@@ -41,21 +35,25 @@ public class SoundMixerChanger : MonoBehaviour
 
     public void SetMasterVolume()
     {
-        _masterVolumeLevel = GetNormalizedSoundVolume(_masterVolumeSlider.value);
-        _audioMixer.SetFloat(MasterVolumeTag, _masterVolumeLevel);
+        SetVolumeByTag(MasterVolumeTag, _masterVolumeLevel, _masterVolumeSlider);
     }
 
     public void SetMusicVolume()
     {
-        _musicVolumeLevel = GetNormalizedSoundVolume(_musicVolumeSlider.value);
-        _audioMixer.SetFloat(MusicVolumeTag, _musicVolumeLevel);
+        SetVolumeByTag(MusicVolumeTag, _musicVolumeLevel, _musicVolumeSlider);
     }
 
     public void SetButtonsSoundVolume()
     {
-        _buttonsVolumeLevel = GetNormalizedSoundVolume(_buttonsVolumeSlider.value);
-        _audioMixer.SetFloat(ButtonsVolumeTag, _buttonsVolumeLevel);
+        SetVolumeByTag(ButtonsVolumeTag, _buttonsVolumeLevel, _buttonsVolumeSlider);
     }
+
+    private void SetVolumeByTag(string volumeNameTag, float volumeLevel, Slider slider)
+    {
+        volumeLevel = GetNormalizedSoundVolume(slider.value);
+        _audioMixer.SetFloat(volumeNameTag, volumeLevel);
+    }
+
     private void InitAudioSource(Button currentButton, Button masterVolumeButton, AudioClip audioClip)
     {
         currentButton.TryGetComponent(out PlaySound playSound);
@@ -66,10 +64,4 @@ public class SoundMixerChanger : MonoBehaviour
     {
         return Mathf.Log10(value) * 20;
     }
-
-    //private void OnSoundVolumeMute()
-    //{
-    //    TextMeshProUGUI text = _buttonMasterVolume.gameObject.GetComponentInChildren<TextMeshProUGUI>();
-    //    text.text = _audioSourceMusic.mute == false ? "Turn sound Off" : "Turn sound On";
-    //}
 }

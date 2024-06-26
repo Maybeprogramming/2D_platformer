@@ -145,7 +145,7 @@ GameObject:
   - component: {fileID: 325436443}
   - component: {fileID: 325436444}
   m_Layer: 0
-  m_Name: AudioButton1
+  m_Name: AudioButtonAttack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -362,7 +362,7 @@ GameObject:
   - component: {fileID: 1271692685}
   - component: {fileID: 1271692686}
   m_Layer: 0
-  m_Name: Music
+  m_Name: AudioBackgroundMusic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -490,7 +490,7 @@ GameObject:
   - component: {fileID: 1297207084}
   - component: {fileID: 1297207085}
   m_Layer: 0
-  m_Name: AudioButton2
+  m_Name: AudioButtonHeal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -626,7 +626,7 @@ GameObject:
   - component: {fileID: 1447825366}
   - component: {fileID: 1447825370}
   m_Layer: 5
-  m_Name: Menu
+  m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -734,9 +734,9 @@ MonoBehaviour:
   _audioSourceButton2: {fileID: 1297207085}
   _audioSourceButton3: {fileID: 1930948780}
   _musicAudioClip: {fileID: 8300000, guid: 7f5e911c673171c4ba64922af9a8639d, type: 3}
-  _buttonAudioClip1: {fileID: 8300000, guid: 858875cb4879b0c4694626bb87a02cde, type: 3}
+  _buttonAudioClip1: {fileID: 8300000, guid: 93c024704ce75954aba24ab37dd4a67f, type: 3}
   _buttonAudioClip2: {fileID: 8300000, guid: c02b3b38921c537428266c8412d6766a, type: 3}
-  _buttonAudioClip3: {fileID: 8300000, guid: ee91ad812a7dae64ba77f9375be56c1c, type: 3}
+  _buttonAudioClip3: {fileID: 8300000, guid: b70211b13054e0b48bd4601ab9db72df, type: 3}
   _soundButton1: {fileID: 2092363288}
   _soundButton2: {fileID: 1534675915}
   _soundButton3: {fileID: 505475435}
@@ -903,13 +903,33 @@ PrefabInstance:
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 1562479983098121644, guid: cb1b635437fc1f344a1325a17141a664, type: 3}
+      propertyPath: m_Name
+      value: ButtonHeal
+      objectReference: {fileID: 0}
+    - target: {fileID: 1617959632421472745, guid: cb1b635437fc1f344a1325a17141a664, type: 3}
+      propertyPath: m_Name
+      value: Background
+      objectReference: {fileID: 0}
+    - target: {fileID: 1669063869707913667, guid: cb1b635437fc1f344a1325a17141a664, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1669063869707913667, guid: cb1b635437fc1f344a1325a17141a664, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1669063869707913667, guid: cb1b635437fc1f344a1325a17141a664, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -100
+      objectReference: {fileID: 0}
     - target: {fileID: 1669063869707913667, guid: cb1b635437fc1f344a1325a17141a664, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1669063869707913667, guid: cb1b635437fc1f344a1325a17141a664, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -15
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1687168578540520158, guid: cb1b635437fc1f344a1325a17141a664, type: 3}
       propertyPath: m_AnchorMax.x
@@ -1144,12 +1164,24 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3138274119746017583, guid: cb1b635437fc1f344a1325a17141a664, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3138274119746017583, guid: cb1b635437fc1f344a1325a17141a664, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3138274119746017583, guid: cb1b635437fc1f344a1325a17141a664, type: 3}
+      propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3138274119746017583, guid: cb1b635437fc1f344a1325a17141a664, type: 3}
       propertyPath: m_AnchorMin.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3138274119746017583, guid: cb1b635437fc1f344a1325a17141a664, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -100
       objectReference: {fileID: 0}
     - target: {fileID: 3138274119746017583, guid: cb1b635437fc1f344a1325a17141a664, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -1231,6 +1263,10 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3781030532326156173, guid: cb1b635437fc1f344a1325a17141a664, type: 3}
+      propertyPath: m_Name
+      value: ButtonPay
+      objectReference: {fileID: 0}
     - target: {fileID: 3818982293280206666, guid: cb1b635437fc1f344a1325a17141a664, type: 3}
       propertyPath: m_text
       value: 
@@ -1239,9 +1275,17 @@ PrefabInstance:
       propertyPath: m_fontSize
       value: 24
       objectReference: {fileID: 0}
+    - target: {fileID: 3939821119766685450, guid: cb1b635437fc1f344a1325a17141a664, type: 3}
+      propertyPath: m_Name
+      value: GroupButtons
+      objectReference: {fileID: 0}
     - target: {fileID: 4032958251559727572, guid: cb1b635437fc1f344a1325a17141a664, type: 3}
       propertyPath: m_text
       value: Master Volume
+      objectReference: {fileID: 0}
+    - target: {fileID: 4344473705962713832, guid: cb1b635437fc1f344a1325a17141a664, type: 3}
+      propertyPath: m_Name
+      value: ButtonVolumeEnable
       objectReference: {fileID: 0}
     - target: {fileID: 4426264231080368427, guid: cb1b635437fc1f344a1325a17141a664, type: 3}
       propertyPath: m_Type
@@ -1249,7 +1293,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4841021116481047493, guid: cb1b635437fc1f344a1325a17141a664, type: 3}
       propertyPath: m_Name
-      value: Options
+      value: OptionsMenu
       objectReference: {fileID: 0}
     - target: {fileID: 4923257006826205522, guid: cb1b635437fc1f344a1325a17141a664, type: 3}
       propertyPath: m_Name
@@ -1278,6 +1322,10 @@ PrefabInstance:
     - target: {fileID: 4931956831407988511, guid: cb1b635437fc1f344a1325a17141a664, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4966936433744432504, guid: cb1b635437fc1f344a1325a17141a664, type: 3}
+      propertyPath: m_Name
+      value: ButtonAttack
       objectReference: {fileID: 0}
     - target: {fileID: 6341305403715870702, guid: cb1b635437fc1f344a1325a17141a664, type: 3}
       propertyPath: m_IsActive
@@ -1410,7 +1458,7 @@ PrefabInstance:
     - target: {fileID: 7333380462200868539, guid: cb1b635437fc1f344a1325a17141a664, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 8e9441635f0c6704a929cfac5cbe709f, type: 3}
+      objectReference: {fileID: 21300000, guid: 1cbf7acf7e1976d439a7c27474a0ba7f, type: 3}
     - target: {fileID: 7622454579969038807, guid: cb1b635437fc1f344a1325a17141a664, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
@@ -1433,19 +1481,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7791056176724252621, guid: cb1b635437fc1f344a1325a17141a664, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7791056176724252621, guid: cb1b635437fc1f344a1325a17141a664, type: 3}
       propertyPath: m_AnchorMin.y
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7791056176724252621, guid: cb1b635437fc1f344a1325a17141a664, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -450
+      objectReference: {fileID: 0}
+    - target: {fileID: 7791056176724252621, guid: cb1b635437fc1f344a1325a17141a664, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -175
+      value: 175
       objectReference: {fileID: 0}
     - target: {fileID: 7791056176724252621, guid: cb1b635437fc1f344a1325a17141a664, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -117
+      value: -100
       objectReference: {fileID: 0}
     - target: {fileID: 7822528910090481020, guid: cb1b635437fc1f344a1325a17141a664, type: 3}
       propertyPath: m_margin.w
@@ -1581,7 +1633,7 @@ GameObject:
   - component: {fileID: 1930948779}
   - component: {fileID: 1930948780}
   m_Layer: 0
-  m_Name: AudioButton3
+  m_Name: AudioButtonPay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1719,7 +1771,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2124729009}
   m_Layer: 0
-  m_Name: Audio
+  m_Name: AudioGroup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

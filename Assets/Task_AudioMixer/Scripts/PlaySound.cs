@@ -16,10 +16,6 @@ public class PlaySound : MonoBehaviour
         _audioSource = GetComponent<AudioSource>();
     }
 
-    private void Start()
-    {
-    }
-
     private void OnDisable()
     {
         _soundButton?.onClick.RemoveListener(OnPlaySound);

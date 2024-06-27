@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayMusic : PlaySound
+public class MusicSource : SoundSource
 {
     public override void Init(Button soundButton, Button masterVolumeButton, AudioClip audioClip)
     {

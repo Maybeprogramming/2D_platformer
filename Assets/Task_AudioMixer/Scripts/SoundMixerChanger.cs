@@ -56,7 +56,7 @@ public class SoundMixerChanger : MonoBehaviour
 
     private void InitAudioSource(Button currentButton, Button masterVolumeButton, AudioClip audioClip)
     {
-        currentButton.TryGetComponent(out PlaySound playSound);
+        currentButton.TryGetComponent(out SoundSource playSound);
         playSound?.Init(currentButton, masterVolumeButton, audioClip);
     }
 

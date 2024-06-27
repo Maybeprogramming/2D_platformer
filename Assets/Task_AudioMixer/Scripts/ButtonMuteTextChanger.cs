@@ -8,29 +8,29 @@ public class ButtonMuteTextChanger : MonoBehaviour
     const string UnMuteText = "Turn sound Off";
 
     [SerializeField] private TextMeshProUGUI _muteText;
-    [SerializeField] private Button muteButton;
+    [SerializeField] private Button _muteButton;
 
-    private bool isMute;
+    private bool _isMute;
 
     private void Start()
     {
         _muteText = GetComponentInChildren<TextMeshProUGUI>();
-        isMute = false;
+        _isMute = false;
     }
 
     private void OnEnable()
     {
-        muteButton.onClick.AddListener(OnMuteTextChanged);
+        _muteButton.onClick.AddListener(OnMuteTextChanged);
     }
 
     private void OnDisable()
     {
-        muteButton.onClick.RemoveListener(OnMuteTextChanged);
+        _muteButton.onClick.RemoveListener(OnMuteTextChanged);
     }
 
     private void OnMuteTextChanged()
     {
-        isMute = !isMute;
-        _muteText.text = isMute == false ? UnMuteText : MuteText;
+        _isMute = !_isMute;
+        _muteText.text = _isMute == false ? UnMuteText : MuteText;
     }
 }

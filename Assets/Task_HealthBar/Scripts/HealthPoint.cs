@@ -15,11 +15,6 @@ public class HealthPoint : MonoBehaviour
     public float MinValue => _minValue;
     public float CurrentValue => _currentValue;
 
-    private void Awake()
-    {
-        _currentValue = _maxValue;
-    }
-
     public bool Add(float healthValue)
     {
         _newValue = Mathf.Clamp(_currentValue + healthValue, _minValue, _maxValue);

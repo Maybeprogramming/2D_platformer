@@ -5,8 +5,7 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Slider))]
 public class HealthSmoothViev : HealthBaseViev
 {
-    [SerializeField] private float _stepDelta;
-    [SerializeField] private float _smoothTime;
+    [SerializeField] private float _smoothStepTarget;
 
     private Slider _slider;
     private Coroutine _healthFilling;
@@ -21,7 +20,7 @@ public class HealthSmoothViev : HealthBaseViev
 
     public override void OnHealthChanged(float healthValue)
     {
-        if (_healthFilling != null && gameObject.activeSelf == true)
+        if (_healthFilling != null)
         {
             StopCoroutine(_healthFilling);
         }
@@ -31,22 +30,15 @@ public class HealthSmoothViev : HealthBaseViev
 
     private IEnumerator SliderValueFilling(float currentHealthValue)
     {
-        float elapsedTime = 0f;
-        float smoothTime = _smoothTime;
-        
+        float stepElapsed = 0;
+        float stepTarget = _smoothStepTarget;
+        float deltaMax = currentHealthValue - _slider.value;
+        float deltaStep = deltaMax / stepTarget;
 
-        while (elapsedTime < smoothTime)
+        while (stepElapsed < stepTarget)
         {
-            elapsedTime += Time.deltaTime;
-            float percentElapsedTime = elapsedTime / smoothTime;
-            float delta = currentHealthValue - _slider.value;
-            float nextValue = currentHealthValue * percentElapsedTime;
-            float stepValue = _slider.value - nextValue;
-            Debug.Log(nextValue);
-            _slider.value += stepValue;
-
-            Debug.Log(percentElapsedTime);
-
+            _slider.value = Mathf.Clamp(_slider.value + deltaStep, _health.MinValue, _health.MaxValue);
+            stepElapsed++;
 
             yield return null;
         }

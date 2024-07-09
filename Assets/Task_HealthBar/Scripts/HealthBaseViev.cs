@@ -4,13 +4,9 @@ public abstract class HealthBaseViev : MonoBehaviour
 {
     [SerializeField] protected HealthPoint _health;
 
-    private void Awake()
-    {
-        _health.ValueChanged += OnHealthChanged;
-    }
-
     private void OnEnable()
     {
+        _health.ValueChanged += OnHealthChanged;
     }
 
     private void OnDisable()

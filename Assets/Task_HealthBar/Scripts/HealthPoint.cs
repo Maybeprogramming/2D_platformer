@@ -3,26 +3,27 @@ using UnityEngine;
 
 public class HealthPoint : MonoBehaviour
 {
-    [SerializeField] private float _currentValue;
-    [SerializeField] private float _minValue = 0;
-    [SerializeField] private float _maxValue;
-
-    private float _newValue;
-
     public event Action<float> ValueChanged;
 
-    public float MaxValue => _maxValue;
-    public float MinValue => _minValue;
-    public float CurrentValue => _currentValue;
+    public float MaxValue { get; private set; }
+    public float MinValue { get; private set; }
+    public float CurrentValue { get; private set; }
+
+    public void Init(float currentValue, float minValue, float maxValue)
+    {
+        CurrentValue = currentValue;
+        MinValue = minValue;
+        MaxValue = maxValue;
+    }
 
     public bool Add(float healthValue)
     {
-        _newValue = Mathf.Clamp(_currentValue + healthValue, _minValue, _maxValue);
+        float newValue = Mathf.Clamp(CurrentValue + healthValue, MinValue, MaxValue);
 
-        if (_currentValue != _newValue)
+        if (CurrentValue != newValue)
         {
-            _currentValue = _newValue;
-            ValueChanged?.Invoke(_currentValue);
+            CurrentValue = newValue;
+            ValueChanged?.Invoke(CurrentValue);
 
             return true;
         }
@@ -32,12 +33,12 @@ public class HealthPoint : MonoBehaviour
 
     public bool Remove(float healthValue)
     {
-        _newValue = Mathf.Clamp(_currentValue - healthValue, _minValue, _maxValue);
+        float newValue = Mathf.Clamp(CurrentValue - healthValue, MinValue, MaxValue);
 
-        if (_currentValue != _newValue)
+        if (CurrentValue != newValue)
         {
-            _currentValue = _newValue;
-            ValueChanged?.Invoke(_currentValue);
+            CurrentValue = newValue;
+            ValueChanged?.Invoke(CurrentValue);
 
             return true;
         }

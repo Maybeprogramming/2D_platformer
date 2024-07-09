@@ -45,7 +45,7 @@ public class HealthSmoothViev : HealthBaseViev
 
         if (_slider.value == _health.MinValue)
         {
-            StopAllCoroutines();
+            StopCoroutine(_healthFilling);
         }
     }
 }

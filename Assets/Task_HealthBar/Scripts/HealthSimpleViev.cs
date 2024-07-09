@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,7 +7,6 @@ public class HealthSimpleViev : HealthBaseViev
     [SerializeField] private float _stepDelta;
 
     private Slider _slider;
-    private Coroutine _healthFilling;
 
     private void Start()
     {
@@ -20,25 +18,6 @@ public class HealthSimpleViev : HealthBaseViev
 
     public override void OnHealthChanged(float healthValue)
     {
-        if (_healthFilling != null && gameObject.activeSelf == true)
-        {
-            StopCoroutine(_healthFilling);
-        }
-
-        _healthFilling = StartCoroutine(SliderValueFilling(healthValue));
-    }
-
-    private IEnumerator SliderValueFilling(float currentHealthValue)
-    {
-        while (_slider.value != currentHealthValue)
-        {
-            _slider.value = Mathf.MoveTowards(_slider.value, currentHealthValue, _stepDelta);
-            yield return null;
-        }
-
-        if (_slider.value == _health.MinValue)
-        {
-            StopAllCoroutines();
-        }
+        _slider.value = Mathf.Clamp(healthValue, _health.MinValue, _health.MaxValue);
     }
 }

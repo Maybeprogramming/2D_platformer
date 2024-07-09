@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class HealthPoint : MonoBehaviour
 {
-    public event Action<float> ValueChanged;
+    public event Action<float, float, float> ValueChanged;
 
     public float MaxValue { get; private set; }
     public float MinValue { get; private set; }
@@ -14,16 +14,15 @@ public class HealthPoint : MonoBehaviour
         CurrentValue = currentValue;
         MinValue = minValue;
         MaxValue = maxValue;
+        ValueChanged?.Invoke(CurrentValue, MinValue, MaxValue);
     }
 
     public bool Add(float healthValue)
     {
-        float newValue = Mathf.Clamp(CurrentValue + healthValue, MinValue, MaxValue);
-
-        if (CurrentValue != newValue)
+        if (healthValue > 0f)
         {
-            CurrentValue = newValue;
-            ValueChanged?.Invoke(CurrentValue);
+            CurrentValue = Mathf.Clamp(CurrentValue + healthValue, MinValue, MaxValue);
+            ValueChanged?.Invoke(CurrentValue, MinValue, MaxValue);
 
             return true;
         }
@@ -33,12 +32,10 @@ public class HealthPoint : MonoBehaviour
 
     public bool Remove(float healthValue)
     {
-        float newValue = Mathf.Clamp(CurrentValue - healthValue, MinValue, MaxValue);
-
-        if (CurrentValue != newValue)
+        if (healthValue > 0f)
         {
-            CurrentValue = newValue;
-            ValueChanged?.Invoke(CurrentValue);
+            CurrentValue = Mathf.Clamp(CurrentValue - healthValue, MinValue, MaxValue);
+            ValueChanged?.Invoke(CurrentValue, MinValue, MaxValue);
 
             return true;
         }

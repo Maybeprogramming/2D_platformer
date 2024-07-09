@@ -4,20 +4,15 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Slider))]
 public class HealthSimpleViev : HealthBaseViev
 {
-    [SerializeField] private float _stepDelta;
+    protected Slider Slider;
 
-    private Slider _slider;
-
-    private void Start()
+    private void Awake()
     {
-        _slider = GetComponent<Slider>();
-        _slider.minValue = _health.MinValue;
-        _slider.maxValue = _health.MaxValue;
-        _slider.value = _health.CurrentValue;
+        Slider = GetComponent<Slider>();
     }
 
-    public override void OnHealthChanged(float healthValue)
+    public override void OnHealthChanged(float healthValue, float minValue, float maxValue)
     {
-        _slider.value = Mathf.Clamp(healthValue, _health.MinValue, _health.MaxValue);
+        Slider.value = Mathf.Clamp(healthValue / maxValue, minValue, maxValue);
     }
 }

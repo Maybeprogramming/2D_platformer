@@ -5,21 +5,13 @@ public class HealthTextViev : HealthBaseViev
 {
     [SerializeField] private TextMeshProUGUI _healthTextEntity;
 
-    private string _healthText;
-
-    private void Start()
+    public override void OnHealthChanged(float healthValue, float minValue, float maxValue)
     {
-        UpdateText(_health.CurrentValue);
+        UpdateTextBar(healthValue, maxValue);
     }
 
-    public override void OnHealthChanged(float healthValue)
+    private void UpdateTextBar(float healthValue, float maxValue)
     {
-        UpdateText(healthValue);
-    }
-
-    private void UpdateText(float healthValue)
-    {
-        _healthText = $"{healthValue}/{_health.MaxValue}";
-        _healthTextEntity.text = _healthText;
+        _healthTextEntity.text = $"{healthValue}/{maxValue}";
     }
 }

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public abstract class HealthBaseViev : MonoBehaviour
 {
-    [SerializeField] protected HealthPoint _health;
+    [SerializeField] private HealthPoint _health;
 
     private void OnEnable()
     {
@@ -14,5 +14,5 @@ public abstract class HealthBaseViev : MonoBehaviour
         _health.ValueChanged -= OnHealthChanged;
     }
 
-    public abstract void OnHealthChanged(float healthValue);
+    public abstract void OnHealthChanged(float currentHealthValue, float minValue, float maxValue);
 }

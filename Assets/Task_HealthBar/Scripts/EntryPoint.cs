@@ -7,7 +7,7 @@ public class EntryPoint : MonoBehaviour
     [SerializeField] private float _minHealthEntity;
     [SerializeField] private float _maxHealthEntity;
 
-    private void Awake()
+    private void Start()
     {
         _healthEntity.Init(_currentHealthEntity, _minHealthEntity, _maxHealthEntity);
     }

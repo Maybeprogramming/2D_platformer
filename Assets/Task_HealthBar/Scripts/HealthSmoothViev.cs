@@ -3,49 +3,33 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Slider))]
-public class HealthSmoothViev : HealthBaseViev
+public class HealthSmoothViev : HealthSimpleViev
 {
-    [SerializeField] private float _smoothStepTarget;
+    [SerializeField] private float _smoothSliderTime;
 
-    private Slider _slider;
     private Coroutine _healthFilling;
 
-    private void Start()
-    {
-        _slider = GetComponent<Slider>();
-        _slider.minValue = _health.MinValue;
-        _slider.maxValue = _health.MaxValue;
-        _slider.value = _health.CurrentValue;
-    }
-
-    public override void OnHealthChanged(float healthValue)
+    public override void OnHealthChanged(float healthValue, float minValue, float maxValue)
     {
         if (_healthFilling != null)
         {
             StopCoroutine(_healthFilling);
         }
 
-        _healthFilling = StartCoroutine(SliderValueFilling(healthValue));
+        _healthFilling = StartCoroutine(SliderValueFilling(healthValue, minValue, maxValue));
     }
 
-    private IEnumerator SliderValueFilling(float currentHealthValue)
+    private IEnumerator SliderValueFilling(float currentHealthValue, float minValue, float maxValue)
     {
-        float stepElapsed = 0;
-        float stepTarget = _smoothStepTarget;
-        float deltaMax = currentHealthValue - _slider.value;
-        float deltaStep = deltaMax / stepTarget;
+        float currentValue = currentHealthValue / maxValue;
+        float timeElapsed = 0f;
 
-        while (stepElapsed < stepTarget)
+        while (timeElapsed < _smoothSliderTime)
         {
-            _slider.value = Mathf.Clamp(_slider.value + deltaStep, _health.MinValue, _health.MaxValue);
-            stepElapsed++;
+            timeElapsed += Time.deltaTime;
+            Slider.value = Mathf.Lerp(Slider.value, currentValue, timeElapsed/_smoothSliderTime);
 
             yield return null;
-        }
-
-        if (_slider.value == _health.MinValue)
-        {
-            StopCoroutine(_healthFilling);
         }
     }
 }

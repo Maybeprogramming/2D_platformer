@@ -3,43 +3,34 @@ using UnityEngine;
 
 public class HealthPoint : MonoBehaviour
 {
-    public event Action<float, float, float> ValueChanged;
+    public event Action<float, float> ValueChanged;
 
     public float MaxValue { get; private set; }
-    public float MinValue { get; private set; }
+    public float MinValue { get; private set; } = 0f;
     public float CurrentValue { get; private set; }
 
-    public void Init(float currentValue, float minValue, float maxValue)
+    public void Init(float currentValue, float maxValue)
     {
         CurrentValue = currentValue;
-        MinValue = minValue;
         MaxValue = maxValue;
-        ValueChanged?.Invoke(CurrentValue, MinValue, MaxValue);
+        ValueChanged?.Invoke(CurrentValue, MaxValue);
     }
 
-    public bool Add(float healthValue)
+    public void Add(float healthValue)
     {
         if (healthValue > 0f)
         {
             CurrentValue = Mathf.Clamp(CurrentValue + healthValue, MinValue, MaxValue);
-            ValueChanged?.Invoke(CurrentValue, MinValue, MaxValue);
-
-            return true;
+            ValueChanged?.Invoke(CurrentValue, MaxValue);
         }
-
-        return false;
     }
 
-    public bool Remove(float healthValue)
+    public void Remove(float healthValue)
     {
         if (healthValue > 0f)
         {
             CurrentValue = Mathf.Clamp(CurrentValue - healthValue, MinValue, MaxValue);
-            ValueChanged?.Invoke(CurrentValue, MinValue, MaxValue);
-
-            return true;
+            ValueChanged?.Invoke(CurrentValue, MaxValue);
         }
-
-        return false;
     }
 }

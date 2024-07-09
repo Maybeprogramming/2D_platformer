@@ -400,7 +400,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: {fileID: 1681766110}
-  _smoothSliderTime: 10
+  _smoothSliderTime: 1
 --- !u!1 &148597452
 GameObject:
   m_ObjectHideFlags: 0
@@ -1188,7 +1188,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _healthEntity: {fileID: 1681766110}
   _currentHealthEntity: 45
-  _minHealthEntity: 0
   _maxHealthEntity: 100
 --- !u!4 &1252048890
 Transform:

@@ -5,7 +5,7 @@ public class HealthTextViev : HealthBaseViev
 {
     [SerializeField] private TextMeshProUGUI _healthTextEntity;
 
-    public override void OnHealthChanged(float healthValue, float minValue, float maxValue)
+    public override void OnHealthChanged(float healthValue, float maxValue)
     {
         UpdateTextBar(healthValue, maxValue);
     }

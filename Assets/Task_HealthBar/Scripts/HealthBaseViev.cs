@@ -14,5 +14,5 @@ public abstract class HealthBaseViev : MonoBehaviour
         _health.ValueChanged -= OnHealthChanged;
     }
 
-    public abstract void OnHealthChanged(float currentHealthValue, float minValue, float maxValue);
+    public abstract void OnHealthChanged(float currentHealthValue, float maxValue);
 }

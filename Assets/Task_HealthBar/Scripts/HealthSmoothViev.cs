@@ -9,25 +9,26 @@ public class HealthSmoothViev : HealthSimpleViev
 
     private Coroutine _healthFilling;
 
-    public override void OnHealthChanged(float healthValue, float minValue, float maxValue)
+    public override void OnHealthChanged(float healthValue, float maxValue)
     {
         if (_healthFilling != null)
         {
             StopCoroutine(_healthFilling);
         }
 
-        _healthFilling = StartCoroutine(SliderValueFilling(healthValue, minValue, maxValue));
-    }
+        _healthFilling = StartCoroutine(SliderValueFilling(healthValue, maxValue));
 
-    private IEnumerator SliderValueFilling(float currentHealthValue, float minValue, float maxValue)
+    }
+    private IEnumerator SliderValueFilling(float currentHealthValue, float maxValue)
     {
-        float currentValue = currentHealthValue / maxValue;
+        float targetValue = currentHealthValue / maxValue;
+        float startValue = Slider.value;
         float timeElapsed = 0f;
 
         while (timeElapsed < _smoothSliderTime)
         {
             timeElapsed += Time.deltaTime;
-            Slider.value = Mathf.Lerp(Slider.value, currentValue, timeElapsed/_smoothSliderTime);
+            Slider.value = Mathf.Lerp(startValue, targetValue, timeElapsed / _smoothSliderTime);
 
             yield return null;
         }

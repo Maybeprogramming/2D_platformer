@@ -11,8 +11,8 @@ public class HealthSimpleViev : HealthBaseViev
         Slider = GetComponent<Slider>();
     }
 
-    public override void OnHealthChanged(float healthValue, float minValue, float maxValue)
+    public override void OnHealthChanged(float healthValue, float maxValue)
     {
-        Slider.value = Mathf.Clamp(healthValue / maxValue, minValue, maxValue);
+        Slider.value = healthValue / maxValue;
     }
 }

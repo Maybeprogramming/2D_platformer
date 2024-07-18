@@ -3,55 +3,35 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Slider))]
-public class HealthViev : MonoBehaviour
+public class HealthViev : HealthSimpleSliderView
 {
-    [SerializeField] private Health _health;
-    [SerializeField] private float _speed;
+    [SerializeField] private float _smoothSliderTime;
 
-    private Slider _slider;
-    private Coroutine _smoothHealthFilling;
-    private bool isBarActive = false;
+    private Coroutine _healthFilling;
 
-    private void Start()
+    public override void OnHealthChanged(float healthValue, float maxValue)
     {
-        _slider = GetComponent<Slider>();
-        _slider.minValue = _health.MinValue;
-        _slider.maxValue = _health.MaxValue;
-        _slider.value = _health.CurrentValue;
-    }
-
-    private void OnEnable()
-    {
-        _health.ValueChanged += OnHealthChanged;
-    }
-
-    private void OnDisable()
-    {
-        _health.ValueChanged -= OnHealthChanged;
-    }
-
-    private void OnHealthChanged(float value)
-    {
-        if (_smoothHealthFilling != null && gameObject.activeSelf == true)
+        if (_healthFilling != null)
         {
-            StopCoroutine(_smoothHealthFilling);
+            StopCoroutine(_healthFilling);
         }
 
-        _smoothHealthFilling = StartCoroutine(SmoothValueFilling(value));
+        _healthFilling = StartCoroutine(SliderValueFilling(healthValue, maxValue));
+
     }
 
-    private IEnumerator SmoothValueFilling(float currentHealthValue)
+    private IEnumerator SliderValueFilling(float currentHealthValue, float maxValue)
     {
-        while (_slider.value != currentHealthValue)
+        float targetValue = currentHealthValue / maxValue;
+        float startValue = Slider.value;
+        float timeElapsed = 0f;
+
+        while (timeElapsed < _smoothSliderTime)
         {
-            _slider.value = Mathf.MoveTowards(_slider.value, currentHealthValue, _speed);
+            timeElapsed += Time.deltaTime;
+            Slider.value = Mathf.Lerp(startValue, targetValue, timeElapsed / _smoothSliderTime);
+
             yield return null;
-        }
-
-        if (_slider.value == _health.MinValue)
-        {
-            StopAllCoroutines();
-            _slider.gameObject.SetActive(isBarActive);
         }
     }
 }

@@ -33,7 +33,7 @@ public class Enemy : MonoBehaviour
         return true;
     }
 
-    private void OnIsDied(float currentHealthValue)
+    private void OnIsDied(float currentHealthValue, float maxHealthValue)
     {
         if (IsAlive == false)
         {

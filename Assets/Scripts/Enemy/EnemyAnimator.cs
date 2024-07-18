@@ -42,7 +42,7 @@ public class EnemyAnimator : MonoBehaviour
         _mover.Walking -= OnAnimationWalking;
     }
 
-    private void OnAnimationHit(float currentHealth)
+    private void OnAnimationHit(float currentHealth, float maxHealthValue)
     {
         _animator.SetTrigger(Hit);
     }

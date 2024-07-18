@@ -68,7 +68,7 @@ public class Player : MonoBehaviour
         return true;
     }
 
-    private void IsAlreadyDead(float currentHealthValue)
+    private void IsAlreadyDead(float currentHealthValue, float maxHealthValue)
     {
         if (IsAlive == false)
         {

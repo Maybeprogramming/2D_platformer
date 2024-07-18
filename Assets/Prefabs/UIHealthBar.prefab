@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5455161650980315009}
   - component: {fileID: 5487203105462471275}
   - component: {fileID: 7205008810617283160}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: UIHealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -114,7 +114,7 @@ GameObject:
   - component: {fileID: 1181720876337517910}
   - component: {fileID: 3337984758818868944}
   - component: {fileID: 1357094479595255389}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -190,7 +190,7 @@ GameObject:
   - component: {fileID: 556926103564482636}
   - component: {fileID: 8526690305773920337}
   - component: {fileID: 7320086794490905163}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -266,7 +266,7 @@ GameObject:
   - component: {fileID: 1865027072611415323}
   - component: {fileID: 1268692430106452324}
   - component: {fileID: 8960763226444367614}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: HealhtBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -341,9 +341,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 10
+  m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 10
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -360,7 +360,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: {fileID: 0}
-  _speed: 0.1
+  _smoothSliderTime: 0.5
 --- !u!1 &8336605890382824581
 GameObject:
   m_ObjectHideFlags: 0
@@ -370,7 +370,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 754981243318651034}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -407,7 +407,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8796091611649682167}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Handle Slide Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
